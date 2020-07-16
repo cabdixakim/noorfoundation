@@ -77,7 +77,7 @@ class ConfirmedPaymentJob implements ShouldQueue
             ->totalAmount($TotalReceiptAmount)
             // ->logo(public_path('vendor/invoices/sample-logo.png'))
             // You can additionally save generated invoice to configured disk
-            ->save('public');
+            ->save('s3');
             
         $link = $invoice->url();
         // Then send email to party with link
