@@ -18,7 +18,7 @@
     
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="university_name">
-              university_name
+              universty Name
             </label>
             <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('university_name')}}" name="university_name" type="text" placeholder="mogadishu unversity">
            @error('university_name')
@@ -37,7 +37,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester_start">
-              semester_start
+               Semester Starts on?
             </label>
             <div class="flex items-start ">
               <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start')}}" name="semester_start" type="text" placeholder="2020/2/19">
@@ -51,7 +51,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester_end">
-              semester_end
+              semester ends on?
             </label>
             <div class="flex items-start ">
                 <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end')}}" name="semester_end" type="text" placeholder="2020/6/19">
@@ -63,7 +63,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="graduation_date">
-              graduation_date
+              graduation date
             </label>
             <div class="flex items-start ">
                 <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('graduation_date')}}" name="graduation_date" type="text" placeholder="2020/6/19">
@@ -77,7 +77,7 @@
          
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="amount_per_semester">
-              amount_per_semester
+              amount per semester in USD
             </label>
             <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"value="{{old('amount_per_semester')}}"   name="amount_per_semester" type="number" placeholder="400">
              @error('amount_per_semester')

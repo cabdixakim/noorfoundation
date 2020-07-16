@@ -38077,7 +38077,7 @@ var render = function() {
             {
               staticClass:
                 "block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-              attrs: { href: "#" }
+              attrs: { href: this.showProfile }
             },
             [_vm._v("Dashboard\n      ")]
           ),
