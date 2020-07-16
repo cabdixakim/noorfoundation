@@ -84,7 +84,9 @@ class AdminPaymentsController extends Controller
         $data = $request->validate([
             'status'=>'required',
             ]);
-        $payment->update($data);
+        $payment->update([
+            'status'=> $request->input('status'),
+        ]);
         // if($payment){
         //     ConfirmedPaymentJob::dispatch($payment);
         // }
