@@ -89,7 +89,7 @@ class AdminPaymentsController extends Controller
             //     'status'=> $request->input('status'),
             // ]);
         
-            ConfirmedPayment::dispatch($payment);
+            // ConfirmedPayment::dispatch($payment);
       
             return $payment;
     }
