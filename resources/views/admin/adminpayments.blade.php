@@ -17,7 +17,7 @@
          <span class="read-status mr-1 sm:pr-16  border-r sm:border-none border-gray-500 font-lg font-mono font-bold">{{$payment->status}}</span>
       <a href="{{$payment->receipt->url ?? '#'}}" id="the_order " class="sm:pr-16  border-gray-500 border-r text-blue-800 sm:border-none font-bold sm:text-lg sm:track-widest">{{'payment details'}}<i class=" hidden sm:block fa fa-eye" aria-hidden="true"></i></a>
       
-      <select required class="name delivery_selector sm:mr-8  sm:p-2 border-gray-500 border-r sm:border-none">
+      <select required class="name delivery_selector sm:mr-8  sm:p-2 border-gray-500 border-r sm:border-none" name="status">
           <option value="" disabled selected hidden >select status </option>
           <option value="confirmed " >confirmed </option>
          <option value="delivered" >delivered  </option>
