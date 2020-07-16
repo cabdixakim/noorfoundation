@@ -22,7 +22,7 @@ class Student extends User{
 
   public function transcripts()
   {
-     return $this->hasMany(Transcript::class);
+     return $this->hasMany(Transcript::class)->latest();
   }
 
 
