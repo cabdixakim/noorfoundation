@@ -87,8 +87,9 @@ class AdminPaymentsController extends Controller
         $payment->update($data);
         if($payment){
             ConfirmedPaymentJob::dispatch($payment);
+            return $payment;
         }
-        return $payment;
+        
     }
 
     /**
