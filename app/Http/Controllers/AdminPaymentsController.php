@@ -85,10 +85,10 @@ class AdminPaymentsController extends Controller
             'status'=>'required',
             ]);
         $payment->update($data);
-        // if($payment){
-        //     ConfirmedPaymentJob::dispatch($payment);
-        // }
-         dd($payment);
+        if($payment){
+            ConfirmedPaymentJob::dispatch($payment);
+        }
+        return $payment;
     }
 
     /**
