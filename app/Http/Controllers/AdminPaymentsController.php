@@ -92,7 +92,7 @@ class AdminPaymentsController extends Controller
         
             // ConfirmedPayment::dispatch($payment);
       
-            return $payment[0];
+            return $payment;
     }
 
     /**
