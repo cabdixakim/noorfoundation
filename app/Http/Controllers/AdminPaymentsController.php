@@ -81,6 +81,7 @@ class AdminPaymentsController extends Controller
     {
         //
         $payment = Payment::findOrFail($id);
+        ConfirmedPaymentJob::dispatch($payment);
         $data = $request->validate([
             'status'=>'required',
             ]);
@@ -88,7 +89,6 @@ class AdminPaymentsController extends Controller
                 'status'=> $request->input('status'),
             ]);
         
-            ConfirmedPaymentJob::dispatch($payment);
       
             
     }
