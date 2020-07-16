@@ -24,7 +24,7 @@ class GenerateReceipt implements ShouldQueue
      *
      * @return void
      */
-    protected $payment;
+     public $payment;
 
     public function __construct(Payment $payment)
     {
