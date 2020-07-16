@@ -23,7 +23,7 @@
          <option value="delivered" >delivered  </option>
 
       </select>
-              @error('amount_per_semester')
+              @error('status')
               <p class="text-red-500 text-xs italic">Please choose a status</p>
               @enderror
       {{-- <!--<input type="hidden" name="co" class="name" value="{{delivery_company}} "> --> --}}
@@ -60,7 +60,7 @@
                             },
                             data: $updated,
                             success: function(data){
-                                
+                                console.log(data.sponsor.profile.firstname);
                                 $li.find('span.read-status').html(data.status);
                                 if(data.status == 'delivered'){
                                    $(this).html('delivered');
