@@ -100,11 +100,8 @@
             
             <p class="text-lg font-bold font-mono">{{$transcript->description}} </p> 
             @if (!empty($transcript->getFirstMediaUrl('transcripts')))
-                @if ($transcript->getMedia('transcripts')[0]->hasGeneratedConversion('thumb'))
-                   <a class="font-bold text-lg underline" href="{{$transcript->getFirstMediaUrl('transcripts','thumb')}}"> See transcript</a>
-                @else
-                <a class="font-bold text-lg underline" href="{{$transcript->getFirstMediaUrl('transcripts')}} ??  ''"> See transcript</a>
-                @endif
+                   <a class="font-bold text-lg underline" href="{{$transcript->getFirstMediaUrl('transcripts')}}"> See transcript</a>
+               
             @endif
           </div>
         </div>    
