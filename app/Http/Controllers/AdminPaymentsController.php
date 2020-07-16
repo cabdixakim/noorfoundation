@@ -82,7 +82,7 @@ class AdminPaymentsController extends Controller
     {
         //
         $payment = Payment::find($id)->with('sponsor.profile')->get();
-        dd($payment[0]->sponsor->profile);
+        dd($payment[0]->sponsor->profile->firstname);
         // $data = $request->validate([
         //     'status'=>'required',
         //     ]);
