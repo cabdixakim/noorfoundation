@@ -60,7 +60,7 @@
                             },
                             data: $updated,
                             success: function(data){
-                                console.log(data.status);
+                                console.log(data.sponsor.profile.firstname);
                                 $li.find('span.read-status').html(data.status);
                                 if(data.status == 'delivered'){
                                    $(this).html('delivered');
