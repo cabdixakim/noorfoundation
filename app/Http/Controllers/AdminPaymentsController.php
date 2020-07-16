@@ -81,7 +81,7 @@ class AdminPaymentsController extends Controller
     {
         //
         $payment = Payment::findOrFail($id);
-        ConfirmedPaymentJob::dispatch($payment);
+        dd($payment->sponsor->profile);
         $data = $request->validate([
             'status'=>'required',
             ]);
