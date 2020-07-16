@@ -56,7 +56,7 @@
         } else {
           $paymentRoute = '#section';
         }
-       echo $paymentRoute;
+       
     @endphp
     <div id="app">
     <nav-component :user ="{{ $user }}" 
