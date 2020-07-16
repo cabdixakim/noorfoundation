@@ -21,7 +21,8 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "pragmarx/countries": "^0.7.0",
         "propaganistas/laravel-phone": "^4.2",
-        "spatie/laravel-medialibrary": "^8.0.0"
+        "spatie/laravel-medialibrary": "^8.0.0",
+        "symfony/intl": "^5.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
