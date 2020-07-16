@@ -79,7 +79,7 @@ class TranscriptController extends Controller
         if($user->user_type == 'student'){
             $student = Student::findOrFail($user->id);
             $result = $student->transcripts()->create(['description'=> $data['description']]);
-            $result->addMediaFromRequest('photo')->toMediaCollection('transcripts');
+            $result->addMediaFromRequest('photo')->toMediaCollection('transcripts','s3');
             return redirect(route('student.index'));
         } else {
             return redirect('/');
