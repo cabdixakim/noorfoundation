@@ -35,7 +35,8 @@
      @push('scripts')
          <script>
                 $(document).ready(function(){
-                    $('.saveEdit').on('click',function(){
+                    $('.saveEdit').on('click',function(e){
+                        e.preventDefault();
                         var $li = $(this).closest('li');
                         var $id = $li.attr('data-id');
                         var $val = $li.find('select.name').val();
