@@ -23,6 +23,9 @@
          <option value="delivered" >delivered  </option>
 
       </select>
+              @error('amount_per_semester')
+              <p class="text-red-500 text-xs italic">Please choose a status</p>
+              @enderror
       {{-- <!--<input type="hidden" name="co" class="name" value="{{delivery_company}} "> --> --}}
       <button type="submit" value="assign delivery company" class="saveEdit outline-none text-sm border-blue rounded-lg px-2 shadow transparent bg-blue-500 hover:bg-blue-700 pl-2 text-gray-100"> <p>update</p> </a>
        
@@ -57,7 +60,7 @@
                             },
                             data: $updated,
                             success: function(data){
-                                console.log(data);
+                                
                                 $li.find('span.read-status').html(data.status);
                                 if(data.status == 'delivered'){
                                    $(this).html('delivered');
