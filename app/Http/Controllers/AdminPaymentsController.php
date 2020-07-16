@@ -22,7 +22,7 @@ class AdminPaymentsController extends Controller
     public function index()
     {
         //
-        $payments = Payment::where('status','!=','delivered')->with('receipt')->get();
+        $payments = Payment::where('status','!=','delivered')->with('receipt')->latest();
         
         return view('admin.adminpayments',compact('payments'));
     }
@@ -85,10 +85,10 @@ class AdminPaymentsController extends Controller
             'status'=>'required',
             ]);
         $payment->update($data);
-        if($payment){
-            ConfirmedPaymentJob::dispatch($payment);
-        }
-        return $payment;
+        // if($payment){
+        //     ConfirmedPaymentJob::dispatch($payment);
+        // }
+         dd($payment);
     }
 
     /**
