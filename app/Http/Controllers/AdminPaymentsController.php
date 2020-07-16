@@ -80,17 +80,22 @@ class AdminPaymentsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $payment = Payment::findOrFail($id);
-        $data = $request->validate([
-            'status'=>'required',
-            ]);
-            $payment->update([
-                'status'=> $request->input('status'),
-            ]);
-        
-            // ConfirmedPaymentJob::dispatch($payment);
+        if(auth()->check()){
+            if (auth()->user()->user_type == 'admin') {
+                    # code...
+                    $payment = Payment::findOrFail($id);
+                    // $data = $request->validate([
+                    // 'status'=>'required',
+                    // ]);
+                    $payment->update([
+                        'status'=> $request->input('status'),
+                    ]);
+                
+                    ConfirmedPaymentJob::dispatch($payment);
+            }
+        }
       
-        return $payment;
+            return $payment;
     }
 
     /**
