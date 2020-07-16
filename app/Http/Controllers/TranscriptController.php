@@ -80,6 +80,7 @@ class TranscriptController extends Controller
             $student = Student::findOrFail($user->id);
             $result = $student->transcripts()->create(['description'=> $data['description']]);
             $result->addMediaFromRequest('photo')->toMediaCollection('transcripts','s3');
+            dd($result->getFirstMediaUrl('transcripts'));
             return redirect(route('student.index'));
         } else {
             return redirect('/');
