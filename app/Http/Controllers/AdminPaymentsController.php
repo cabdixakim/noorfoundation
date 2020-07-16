@@ -81,7 +81,7 @@ class AdminPaymentsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $payment = Payment::find($id);
+        $payment = Payment::find($id)->with('sponsor.profile')->get();
         dd($payment);
         // $data = $request->validate([
         //     'status'=>'required',
