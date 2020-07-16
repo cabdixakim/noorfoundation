@@ -51,12 +51,12 @@
             $ProfileCreateRoute = route('sponsor.create');
             $ProfileIndexRoute = route('sponsor.index');
         }
-        if (Route::current()->getName() != 'sponsor.index' && Route::current()->getName() != 'student.index')  {
+        if (\Route::current()->getName() != 'sponsor.index' && \Route::current()->getName() != 'student.index')  {
           $paymentRoute = '/';
         } else {
           $paymentRoute = '#section';
         }
-      
+       echo $paymentRoute;
     @endphp
     <div id="app">
     <nav-component :user ="{{ $user }}" 
