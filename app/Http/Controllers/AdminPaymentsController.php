@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ConfirmedPaymentJob;
 use App\Payment;
 use Illuminate\Http\Request;
+use App\Jobs\ConfirmedPayment;
+use App\Jobs\ConfirmedPaymentJob;
 
 class AdminPaymentsController extends Controller
 {
@@ -81,14 +82,14 @@ class AdminPaymentsController extends Controller
     {
         //
         $payment = Payment::findOrFail($id);
-        $data = $request->validate([
-            'status'=>'required',
-            ]);
+        // $data = $request->validate([
+        //     'status'=>'required',
+        //     ]);
             $payment->update([
                 'status'=> $request->input('status'),
             ]);
         
-            ConfirmedPaymentJob::dispatch($payment);
+            ConfirmedPayment::dispatch($payment);
       
             return $payment;
     }

@@ -15,7 +15,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 
-class ConfirmedPaymentJob implements ShouldQueue
+class ConfirmedPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
