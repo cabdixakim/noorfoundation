@@ -86,8 +86,7 @@ class AdminPaymentsController extends Controller
             ]);
         $payment->update($data);
         if($payment){
-            $updatedPayment = Payment::find($payment->id)->with(['sponsor.profile','student.profile'])->get();
-            ConfirmedPayment::dispatch($updatedPayment);
+            ConfirmedPayment::dispatch($payment[0]);
         }
         return $payment;
     }
