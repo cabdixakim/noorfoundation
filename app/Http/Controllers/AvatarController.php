@@ -84,12 +84,18 @@ class AvatarController extends Controller
          
         if($user->user_type == 'student'){
             $student = Student::findOrFail($user->id);
-            $student->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
-            return redirect()->route('student.index');
+            if($request->hasFile('photo')){
+                $student->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
+                return redirect()->route('student.index');   
+            }
+             return redirect()->back();
         } elseif($user->user_type == 'sponsor') {
             $sponsor = Sponsor::findOrFail($user->id);
-            $sponsor->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
-            return redirect()->route('sponsor.index');
+            if ($request->hasFile('photo')) {
+                $sponsor->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
+                return redirect()->route('sponsor.index');
+            }
+            return redirect()->back();
         }
     }
 
