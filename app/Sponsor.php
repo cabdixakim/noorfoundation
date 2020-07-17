@@ -18,7 +18,7 @@ class Sponsor extends User{
   }
   public function payments()
   {
-    return $this->hasMany(Payment::class,'user_id');
+    return $this->hasMany(Payment::class,'user_id')->latest();
   }
 
   public function LastFourMonths()

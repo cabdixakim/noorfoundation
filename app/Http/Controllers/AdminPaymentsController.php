@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Payment;
 use Illuminate\Http\Request;
 use App\Jobs\ConfirmedPayment;
-use App\Jobs\ConfirmedPaymentJob;
 
 class AdminPaymentsController extends Controller
 {
@@ -23,7 +22,7 @@ class AdminPaymentsController extends Controller
     public function index()
     {
         //
-        $payments = Payment::where('status','!=','delivered')->with('receipt')->latest()->get();
+        $payments = Payment::where('status','!=','delivered')->with('receipt')->get();
         
         return view('admin.adminpayments',compact('payments'));
     }
@@ -81,18 +80,16 @@ class AdminPaymentsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $payment = Payment::find($id)->with('sponsor.profile')->get();
-        // dd($payment[0]->sponsor->profile->firstname);
-        // $data = $request->validate([
-        //     'status'=>'required',
-        //     ]);
-            // $payment->update([
-            //     'status'=> $request->input('status'),
-            // ]);
-        
-            // ConfirmedPayment::dispatch($payment);
-      
-            return $payment[0];
+        $payment = Payment::find($id);
+        $data = $request->validate([
+            'status'=>'required',
+            ]);
+        $payment->update($data);
+        if($payment){
+            $updatedPayment = Payment::find($payment->id)->with('sponsor.profile','student.profile')->get();
+            ConfirmedPayment::dispatch($updatedPayment[0]);
+        }
+        return $payment;
     }
 
     /**
