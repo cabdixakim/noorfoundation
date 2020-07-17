@@ -31,7 +31,9 @@
       @foreach ($allStudents as $student)
           <div class="flex justify-start border-l border-r border-b border-t border-transparent border-gray-600 p-2 bg-gray-300 ">
             <div> 
-              <p><span class="text-lg font-bold  font-sarif">Full Name:</span> <span class="text-gray-600 pl-2 font-bold text-lg italic ">{{ $student->profile->firstname.' '.$student->profile->middlename.' '.$student->profile->lastname}}</span></p> 
+            @if (!empty($student->profile))
+             <p><span class="text-lg font-bold  font-sarif">Full Name:</span> <span class="text-gray-600 pl-2 font-bold text-lg italic ">{{ $student->profile->firstname.' '.$student->profile->middlename.' '.$student->profile->lastname}}</span></p>     
+            @endif
             </div>
             <div class="sm:ml-32 ml-8 border-l border-gray-400 pl-2">
             <a class="font-bold text-lg underline" href="{{route('student.show',$student->id)}}"> Check Profile</a>

@@ -72,7 +72,7 @@ class TranscriptController extends Controller
         }
         // dd($request->all());
         $data = $request->validate([
-            'description' => ['required', 'string', 'min:20', 'max:150'],
+            'description' => ['required', 'string', 'min:10', 'max:150'],
             'photo' => 'required',
         ]);
         
