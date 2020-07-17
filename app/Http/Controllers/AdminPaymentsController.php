@@ -86,7 +86,7 @@ class AdminPaymentsController extends Controller
             ]);
         $payment->update($data);
         if($payment){
-            ConfirmedPayment::dispatch($payment[0]);
+            ConfirmedPayment::dispatch($payment);
         }
         return $payment;
     }
