@@ -34,10 +34,10 @@ class PaymentConfirmed extends Mailable
     {  
         if($this->payment->status == 'confirmed'){
 
-            return $this->markdown('emails.PaymentConfirmed');
+            return $this->markdown('Emails.PaymentConfirmed');
         } elseif($this->payment->status == 'delivered') {
 
-            return $this->markdown('emails.PaymentDelivered');
+            return $this->markdown('Emails.PaymentDelivered');
         }
     }
 }
