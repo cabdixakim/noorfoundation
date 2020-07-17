@@ -95,7 +95,7 @@ class AvatarController extends Controller
                 $sponsor->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
                 return redirect()->route('sponsor.index');
             }
-            return redirect()->back();
+            return redirect()->back()->with('status','please choose another photo');
         }
     }
 
