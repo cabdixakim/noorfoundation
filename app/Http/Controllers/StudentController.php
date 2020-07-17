@@ -116,7 +116,7 @@ class StudentController extends Controller
         } else {
             $avatar = null;
         }
-         return view('Profiles.StudentProfile', compact('student','avatar','transcripts'));
+         return view('profiles.StudentProfile', compact('student','avatar','transcripts'));
     }
 
     /**
