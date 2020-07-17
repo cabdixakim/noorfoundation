@@ -41,7 +41,7 @@ class ConfirmedPayment implements ShouldQueue
     {
         //
         
-        dd($this->payment->student->profile->lastname);
+        
         $client = new Party([
             'fullname'       => $this->payment->sponsor->profile->firstname.' '.$this->payment->sponsor->profile->middlename.' '.$this->payment->sponsor->profile->lastname,
             'email'       => $this->payment->sponsor->email,
