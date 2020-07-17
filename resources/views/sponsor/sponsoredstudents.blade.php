@@ -27,7 +27,7 @@
       
     </div>
     <div id="menu1" class="tab-pane fade">
-      <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">Results</span> </div>
+      <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">All students</span> </div>
       @foreach ($allStudents as $student)
           <div class="flex justify-start border-l border-r border-b border-t border-transparent border-gray-600 p-2 bg-gray-300 ">
             <div> 
