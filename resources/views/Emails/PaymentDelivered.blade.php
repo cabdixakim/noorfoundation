@@ -9,7 +9,7 @@ Please Contact him at <{{$payment->student->email}}> or through his/her phone: <
 
 Please click the link below to check the receipt
 @endcomponent
-@component('mail::button', ['url' => $payment->receipt->url])
+@component('mail::button', ['url' => $receipt->url])
 See receipt
 @endcomponent
 
