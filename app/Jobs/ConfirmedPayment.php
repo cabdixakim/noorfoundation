@@ -2,10 +2,11 @@
 
 namespace App\Jobs;
 
-use App\Mail\PaymentConfirmed;
 use App\Payment;
 use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
+use App\Mail\PaymentConfirmed;
+use App\Mail\PaymentDelivered;
 use LaravelDaily\Invoices\Invoice;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
@@ -87,8 +88,12 @@ class ConfirmedPayment implements ShouldQueue
         //   $receipt::with('payments.sponsor.profile','payments.student.profile');
         //   $receipt->addMedia(storage_path().'\app\public\\'.$invoice->myCustomfilename())
         //  ->toMediaCollection('receipts');
+         if($this->payment->status == 'confirmed') {
 
-         Mail::to($this->payment->sponsor->email)->send(new PaymentConfirmed($receipt, $this->payment));
+             Mail::to($this->payment->sponsor->email)->send(new PaymentConfirmed($receipt, $this->payment));
+         } else {
+            Mail::to($this->payment->sponsor->email)->send(new PaymentDelivered($receipt, $this->payment));
+         }
 
          
     }

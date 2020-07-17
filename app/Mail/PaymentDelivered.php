@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentConfirmed extends Mailable
+class PaymentDelivered extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,8 +32,9 @@ class PaymentConfirmed extends Mailable
      */
     public function build()
     {  
-
-            return $this->markdown('Emails.PaymentConfirmed');
         
+
+            return $this->markdown('Emails.PaymentDelivered');
+      
     }
 }
