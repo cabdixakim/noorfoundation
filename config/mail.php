@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' =>'ses',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,11 @@ return [
 
         'ses' => [
             'transport' => 'ses',
+            'key' => 'AKIA6NOZ2LM6UVC6JSN2',
+            'secret' => '3155vadPGmFrmQ0xpryN+67QtrX/d1OW4QXtDSer',
+            'region' => 'eu-west-2',  // e.g. us-east-1
+            'version' => 'latest',
+
         ],
 
         'mailgun' => [
@@ -83,8 +88,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'cabdixakimsalan@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'noor foundation'),
     ],
 
     /*
