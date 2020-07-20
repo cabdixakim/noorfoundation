@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Sponsor;
-use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SponsoredStudentsController extends Controller
+class SponsorsListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,31 +19,10 @@ class SponsoredStudentsController extends Controller
         if (Auth::check()) {
             # code...
             if(auth()->user()->user_type == 'sponsor'){
-                $user = auth()->user()->id;
-                $sponsor = Sponsor::findOrFail($user);
-                // dd($sponsor->listStudents());
-
-                // $students = $sponsor->listStudents();
-                // foreach ($students as $key => $value) {
-                //    dd($value->student);
-                // }
-                $sponsoredstudents = [];
-                $payments = $sponsor->payments;
-                foreach ($payments as $key => $value) {
-                    if (!in_array($value->student, $sponsoredstudents)) {
-                        # code...
-                        $sponsoredstudents[] = $value->student;
-                    }
-                }
+               
+                $sponsors = Sponsor::all();
                 
-                $allStudents = Student::all();
-            
-                return view('sponsor.sponsoredstudents',compact('sponsoredstudents','allStudents'));
-            } elseif(auth()->user()->user_type == 'admin'){
-                $allStudents = Student::all();
-                $bannedStudents = Student::onlyTrashed()->get();
-                // dd($bannedStudents);
-                return view('admin.adminstudents',compact('allStudents','bannedStudents'));
+                return view('sponsor.sponsorslist',compact('sponsors'));
             }
             return redirect('/');
         }

@@ -14,7 +14,8 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware(['auth','verified']);
-        $this->middleware('sponsor')->only('show');
+        // $this->middleware('sponsor')->only('show');
+        $this->middleware('admin')->only('destroy');
  
     }
     
@@ -177,5 +178,15 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+        if (auth()->user()->user_type == 'admin') {
+           $student = Student::withTrashed()->find($id);
+           if($student->deleted_at == null){
+               $student->delete();
+               return redirect()->back()->with('status', $student->username.' is now banned');
+           } else {
+              $student->restore();
+              return redirect()->back();
+           }
+        }
     }
 }

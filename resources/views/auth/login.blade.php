@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container">
+    @if (session('status'))
+    <div class="flex justify-center items-center ">
+      <div class="alert alert-danger   mb-0 mt-5" role="alert">
+        {{ session('status') }}
+    </div>
+   </div>
+    @endif
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

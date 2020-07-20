@@ -37,12 +37,17 @@
         if(Auth::check()){
             $user = Auth::user();
         }
-        if(!empty($user->getFirstMediaUrl('avatar'))){
-            if ($user->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
-              $avatar = $user->getFirstMediaUrl('avatar', 'thumb');
+        if ($user->user_type != 'admin') {
+            # code...
+            if(!empty($user->getFirstMediaUrl('avatar'))){
+                if ($user->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
+                  $avatar = $user->getFirstMediaUrl('avatar', 'thumb');
+                }
+            }else {
+                $avatar = asset('defaultImage\default.jpg');
             }
-        }else {
-            $avatar = asset('defaultImage\brooks-leibee-27QcqVqgVg4-unsplash.jpg');
+        } else {
+            $avatar = asset('defaultImage\admin.jpg');
         }
         if ($user->user_type == 'student') {
             $ProfileCreateRoute = route('student.create');
@@ -50,6 +55,9 @@
         }elseif ($user->user_type == 'sponsor') {
             $ProfileCreateRoute = route('sponsor.create');
             $ProfileIndexRoute = route('sponsor.index');
+        } else {
+            $ProfileCreateRoute ='';
+            $ProfileIndexRoute = '/';
         }
         if (\Route::current()->getName() != 'sponsor.index' && \Route::current()->getName() != 'student.index')  {
           $paymentRoute = '/';
@@ -68,6 +76,7 @@
      show-profile="{{$ProfileIndexRoute}}"
      avatar="{{ $avatar ?? '' }}"
      students-route="{{route('sponsored-students.index')}}"
+     sponsors-route="{{route('sponsors-list.index')}}"
     paymentlist-route="{{$paymentRoute}}"
      >
     </nav-component>

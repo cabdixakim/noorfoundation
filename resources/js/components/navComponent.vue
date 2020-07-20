@@ -24,9 +24,11 @@
             <a :href="this.showProfile" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard
             </a>
             
+            <a :href="this.sponsorsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Sponsors
+            </a>
             <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
             </a>
-            <a :href="this.paymentlistRoute" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Payments
+            <a :href="this.paymentlistRoute" v-if="user.user_type != 'admin'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Payments
             </a>
             <a v-if="user.user_type == 'sponsor'" :href="this.paymentRoute" class="ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Donate Now
             </a>
@@ -63,7 +65,7 @@
           -->
           <div :class="profileOpen ? 'block' : 'hidden'" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-10">
             <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-              <a :href="this.createProfileRoute" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile
+              <a :href="this.createProfileRoute" v-if="user.user_type != 'admin'" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile
               </a>
               <a v-if="user.user_type == 'student'" :href="this.createPlanRoute" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">plan
               </a>
@@ -122,7 +124,8 @@
            'paymentRoute',
            'studentsRoute',
            'paymentlistRoute',
-           'transcriptRoute'
+           'transcriptRoute',
+           'sponsorsRoute'
         ],
         
         methods: {

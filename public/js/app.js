@@ -2046,6 +2046,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2053,7 +2055,7 @@ __webpack_require__.r(__webpack_exports__);
       profileOpen: false
     };
   },
-  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'paymentlistRoute', 'transcriptRoute'],
+  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'paymentlistRoute', 'transcriptRoute', 'sponsorsRoute'],
   methods: {
     toggleMenu: function toggleMenu() {
       this.isOpen = !this.isOpen;
@@ -37860,21 +37862,35 @@ var render = function() {
                         {
                           staticClass:
                             "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                          attrs: { href: this.sponsorsRoute }
+                        },
+                        [_vm._v("Sponsors\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.user_type == "sponsor"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                           attrs: { href: this.studentsRoute }
                         },
                         [_vm._v("Students\n            ")]
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-                      attrs: { href: this.paymentlistRoute }
-                    },
-                    [_vm._v("Payments\n            ")]
-                  ),
+                  _vm.user.user_type != "admin"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                          attrs: { href: this.paymentlistRoute }
+                        },
+                        [_vm._v("Payments\n            ")]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.user.user_type == "sponsor"
                     ? _c(
@@ -38009,18 +38025,20 @@ var render = function() {
                         }
                       },
                       [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out",
-                            attrs: {
-                              href: this.createProfileRoute,
-                              role: "menuitem"
-                            }
-                          },
-                          [_vm._v("Your Profile\n              ")]
-                        ),
+                        _vm.user.user_type != "admin"
+                          ? _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out",
+                                attrs: {
+                                  href: this.createProfileRoute,
+                                  role: "menuitem"
+                                }
+                              },
+                              [_vm._v("Your Profile\n              ")]
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _vm.user.user_type == "student"
                           ? _c(
