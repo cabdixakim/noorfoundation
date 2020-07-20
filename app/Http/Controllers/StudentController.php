@@ -112,6 +112,8 @@ class StudentController extends Controller
             if(!empty($student->getFirstMediaUrl('avatar'))){
             if($student->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
                  $avatar = $student->getFirstMediaUrl('avatar', 'thumb');
+            } else {
+                $avatar = $student->getFirstMediaUrl('avatar');
             }
         } else {
             $avatar = null;

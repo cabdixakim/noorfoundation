@@ -78,6 +78,9 @@ class AvatarController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'photo'=> 'required',
+        ]);
         if(auth()->check()){
             $user = auth()->user();
         }
@@ -87,15 +90,19 @@ class AvatarController extends Controller
             if($request->hasFile('photo')){
                 $student->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
                 return redirect()->route('student.index');   
+            } else{
+
+                return redirect()->back();
             }
-             return redirect()->back();
         } elseif($user->user_type == 'sponsor') {
             $sponsor = Sponsor::findOrFail($user->id);
             if ($request->hasFile('photo')) {
                 $sponsor->addMediaFromRequest('photo')->toMediaCollection('avatar','s3');
                 return redirect()->route('sponsor.index');
+            }else {
+
+                return redirect()->back();
             }
-            return redirect()->back()->with('status','please choose another photo');
         }
     }
 
