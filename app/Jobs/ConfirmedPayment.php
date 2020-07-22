@@ -88,13 +88,18 @@ class ConfirmedPayment implements ShouldQueue
         //   $receipt::with('payments.sponsor.profile','payments.student.profile');
         //   $receipt->addMedia(storage_path().'\app\public\\'.$invoice->myCustomfilename())
         //  ->toMediaCollection('receipts');
-        
-         if($this->payment->status == 'confirmed') {
+        try {
+            //code...
+            if($this->payment->status == 'confirmed') {
 
-             Mail::to($this->payment->sponsor->email)->send(new PaymentConfirmed($receipt, $this->payment));
-         } else {
-            Mail::to($this->payment->sponsor->email)->send(new PaymentDelivered($receipt, $this->payment));
-         }
+                Mail::to($this->payment->sponsor->email)->send(new PaymentConfirmed($receipt, $this->payment));
+            } else {
+               Mail::to($this->payment->sponsor->email)->send(new PaymentDelivered($receipt, $this->payment));
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
 
          
     }
