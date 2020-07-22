@@ -64,7 +64,7 @@
                             <a class="navbar-brand" href="{{ route('adminpayments.index') }}">
                                 Payments
                             </a>
-                            <a class="navbar-brand" href="{{route('sponsored-students.index')}}">
+                            <a class="navbar-brand sm:mr-32" href="{{route('sponsored-students.index')}}">
                                 Students
                             </a>
                             <li class="nav-item dropdown">
