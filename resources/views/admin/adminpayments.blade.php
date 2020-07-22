@@ -8,7 +8,8 @@
 @endpush
 
 <ul id="orders" class=" sm:w-3/5 sm:ml-64 ">
-	
+    {{$payments->links()}}
+
       @foreach ($payments  as $key=>$payment)
       
       <li data-id="{{$payment->id}}" class="mb-3 sm:p-4 flex justify-center  list-none mt-8 border bg-gray-200 ">
@@ -28,7 +29,6 @@
        
       </li>
       @endforeach
-		   {{$payments->links()}}
            
 		    
             </ul>
