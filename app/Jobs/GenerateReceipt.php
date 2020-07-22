@@ -92,7 +92,7 @@ class GenerateReceipt implements ShouldQueue
              Mail::to($this->payment->sponsor->email)->send(new PaymentSuccessful($receipt));
         } catch (\Exception $th) {
             //throw $th;
-            $this->payment->destroy();
+            Payment::destroy($this->payment->id);
         }
        
 
