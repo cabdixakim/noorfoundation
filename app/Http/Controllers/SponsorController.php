@@ -115,7 +115,7 @@ class SponsorController extends Controller
         } else {
             $avatar = null;
         }
-         return view('Profiles.sponsorProfile', compact('sponsor','avatar'));
+         return view('profiles.SponsorProfile', compact('sponsor','avatar'));
     }
 
     /**
