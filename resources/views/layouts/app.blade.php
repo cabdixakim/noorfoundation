@@ -61,10 +61,10 @@
                                 </li>
                             @endif
                         @else
-                            <a class="navbar-brand mr-8 sm:hover:border-b-2 sm:hover:border-gray-800 text-gray-800" href="{{ route('adminpayments.index') }}">
+                            <a class="navbar-brand mr-8 hover:text-blue-400 text-gray-800" href="{{ route('adminpayments.index') }}">
                                 Payments
                             </a>
-                            <a class="navbar-brand sm:mr-32 sm:hover:border-b-2 sm:hover:border-gray-800 text-gray-800" href="{{route('sponsored-students.index')}}">
+                            <a class="navbar-brand sm:mr-32 hover:text-blue-400  text-gray-800" href="{{route('sponsored-students.index')}}">
                                 Students
                             </a>
                             <li class="nav-item dropdown">
