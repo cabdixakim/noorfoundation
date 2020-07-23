@@ -15,7 +15,7 @@
       <div >
         <div class="mb-5 text-center">
           <div class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
-            <img id="image" class="object-cover w-full h-32 rounded-full"  src="{{ $avatar ??  asset('defaultImage\brooks-leibee-27QcqVqgVg4-unsplash.jpg') }}"/>
+            <img id="image" class="object-cover w-full h-32 rounded-full"  src="{{ $avatar ??  asset('defaultImage\default.jpg') }}"/>
           </div>
           
           <label 
