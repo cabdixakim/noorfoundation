@@ -23,7 +23,7 @@ class AdminPaymentsController extends Controller
     public function index()
     {
         //
-        $payments = Payment::where('status','!=','delivered')->latest('updated_at');
+        $payments = Payment::latest()->where('status','!=','delivered');
         
         return view('admin.adminpayments',compact('payments'));
     }
