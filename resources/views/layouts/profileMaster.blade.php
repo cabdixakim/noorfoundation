@@ -44,7 +44,7 @@
                   $avatar = $user->getFirstMediaUrl('avatar', 'thumb');
                 }
             }else {
-                $avatar = asset('defaultImage\default.png');
+                $avatar = asset('defaultImage\default.jpg');
             }
         } else {
             $avatar = asset('defaultImage\admin.jpg');
