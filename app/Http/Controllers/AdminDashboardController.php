@@ -21,7 +21,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
         //
-        $payments = Payment::where('status','!=','delivered')->with('receipt')->get();
+        $payments = Payment::where('status','!=','delivered')->with('receipt')->latest()->paginate(5);
         
         return view('admin.adminpayments',compact('payments'));
     }

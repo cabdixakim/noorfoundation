@@ -11,7 +11,11 @@ class Payment extends Model
          'student_id', 'amount','semester','status',
     ];
 
-
+    public function latestPayments()
+    {
+      # code...
+      $this->latest()->get();
+    }
     public function sponsor()
     {
        return $this->belongsTo(Sponsor::class,'user_id');

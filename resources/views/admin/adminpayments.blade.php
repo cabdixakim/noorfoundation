@@ -28,7 +28,9 @@
        
       </li>
       @endforeach
-		   
+    
+        {{$payments->links()}}
+      
            
 		    
             </ul>
