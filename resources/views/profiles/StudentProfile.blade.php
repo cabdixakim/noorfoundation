@@ -8,7 +8,7 @@
       <div class="  sm:mt-8 sm:ml-16 ml-24 p-8 flex-column  ">
       <img class="sm:h-32 sm:w-32 h-16 w-16 mb-2   object-cover rounded-full" src="{{ $avatar ??  asset('defaultImage\default.jpg') }}" alt="" />
       @can('show-edit-avatar')
-      <a href="{{route('avatar.create')}}" class="ml-3 sm:ml-16 mt-2 "><i class="fa fa-camera fa-2x text-gray-400 hover:text-blue-500" aria-hidden="true"></i></a>
+      <a href="{{route('avatar.create')}}" class="ml-3 sm:ml-64 mt-2 "><i class="fa fa-camera fa-2x text-gray-400 hover:text-blue-500" aria-hidden="true"></i></a>
       @endcan
         
       </div>
