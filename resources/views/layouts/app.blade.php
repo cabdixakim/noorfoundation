@@ -60,13 +60,16 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
-                            <a class="navbar-link  sm:mt-1 mr-8 hover:text-blue-400 text-lg  text-gray-800" href="{{ route('adminpayments.index') }}">
-                                Payments
-                            </a>
-                            <a class="navbar-link  sm:mt-1 sm:mr-32 hover:text-blue-400 text-lg text-gray-800" href="{{route('sponsored-students.index')}}">
-                                Students
-                            </a>
+                        @else 
+                         @if (Auth::user()->user_type == 'admin')
+                             
+                         <a class="navbar-link  sm:mt-1 mr-8 hover:text-blue-400 text-lg  text-gray-800" href="{{ route('adminpayments.index') }}">
+                             Payments
+                         </a>
+                         <a class="navbar-link  sm:mt-1 sm:mr-32 hover:text-blue-400 text-lg text-gray-800" href="{{route('sponsored-students.index')}}">
+                             Students
+                         </a>
+                         @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username ?? '' }} <span class="caret"></span>
