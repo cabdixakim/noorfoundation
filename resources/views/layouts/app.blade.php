@@ -20,6 +20,8 @@
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
         crossorigin="anonymous">
     </script>
+ 
+
      @stack('scripts')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -87,6 +89,7 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
@@ -97,5 +100,6 @@
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>
