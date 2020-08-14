@@ -29,7 +29,7 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester">
               semester
             </label>
-            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"value="{{old('semester')}}"  name="semester" type="text" placeholder="1">
+            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"value="{{old('semester')}}"  name="semester" type="number" placeholder="1">
             @error('semester')
             <p class="text-red-500 text-xs italic">Please choose your current semester.</p>
             @enderror
