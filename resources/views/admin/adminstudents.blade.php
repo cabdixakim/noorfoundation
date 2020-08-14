@@ -2,7 +2,7 @@
 @section('content')
 <!-- component -->
  {{-- Tabs section --}}
- <div class="container mt-6 sm:mt-16  " id="section">
+ <div class="container mt-6 sm:mt-20  " id="section">
   @if (session('status'))
   <div class="flex justify-center items-center ">
     <div class="alert alert-danger w-full sm:w-4/5 sm:ml-64 mb-0 mt-5" role="alert">
@@ -10,13 +10,13 @@
   </div>
   @endif
   </div>
-  <ul class="nav nav-tabs ml-8 sm:ml-64 ">
+  <ul class="nav nav-tabs ml-8 sm:ml-32 sm:mt-16  ">
     <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#home">active Students</a></li>
     <li class="pl-8 sm:pl-20 sm:pl-64 font-bold sm:text-lg"><a data-toggle="tab" class="hover:text-gray-800" href="#menu1">Banned students</a></li>
     
   </ul>
 
-  <div class="tab-content ml-6 sm:ml-64 sm:mr-2 mt-6">
+  <div class="tab-content ml-6 sm:ml-32 sm:mr-32 mt-6">
 
 
     <div id="home" class="tab-pane active ">

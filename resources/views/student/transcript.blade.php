@@ -18,7 +18,7 @@
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Add small details about the exam
           </label>
-          <textarea class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"  name="description" type="text" placeholder="main exam result semester one At Muqdisho university Date:2020/5/19">{{Request::old('description')}}</textarea>
+          <textarea class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"  name="description" type="text" placeholder="like the date of exam...and type">{{Request::old('description')}}</textarea>
          @error('description')
            <p class="text-red-500 text-center text-xs italic">{{$message}}</p>
           @enderror

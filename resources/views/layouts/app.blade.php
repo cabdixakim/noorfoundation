@@ -11,16 +11,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-     <!-- jquery -->
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-   <!-- jquery UI -->
-   <script
-        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-        crossorigin="anonymous">
-    </script>
- 
+     <!--  jQuery -->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+     <!-- Bootstrap Date-Picker Plugin -->
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    
+    
 
      @stack('scripts')
     <!-- Fonts -->
@@ -30,11 +26,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mainTail.css') }}" rel="stylesheet">
+      {{-- bootstrap datepicker css --}}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     @stack('styles')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div id="app ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-20">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -47,7 +45,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @if (Auth::check() && Auth::user()->user_type == 'admin')
+                             
+                        <a class="navbar-link   sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('deposit.index') }}">
+                            <i class="fa  fa-plus-circle text-green-400"></i>
+                            <span class="nav-link-text">deposits</span>
+                        </a>
+                        <a class="navbar-link   sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('withdraw.index') }}">
+                            <i class="fa fa-minus-circle text-red-400 "></i>
+                            <span class="nav-link-text">withdrawals</span>
+                       
+                        </a>
+                   
+                        <a class="navbar-link  sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsored-students.index')}}">
+                            <i class="fa fa-fw fa-users"></i>
+                            <span class="nav-link-text">students</span>
+                        </a>
+                        </a>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -63,26 +78,23 @@
                                 </li>
                             @endif
                         @else 
-                         @if (Auth::user()->user_type == 'admin')
-                             
-                         <a class="navbar-link  sm:mt-1 mr-8 hover:text-blue-400 text-lg  text-gray-800" href="{{ route('adminpayments.index') }}">
-                             Payments
-                         </a>
-                         <a class="navbar-link  sm:mt-1 sm:mr-32 hover:text-blue-400 text-lg text-gray-800" href="{{route('sponsored-students.index')}}">
-                             Students
-                         </a>
-                         @endif
+                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username ?? '' }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/password/reset">
+                                        {{ __('Reset Password') }}
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -96,10 +108,10 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
-        </main>
     </div>
+           
+      @yield('content')
+            
 
 </body>
 </html>

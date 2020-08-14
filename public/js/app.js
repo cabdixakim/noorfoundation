@@ -2048,6 +2048,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2055,10 +2063,14 @@ __webpack_require__.r(__webpack_exports__);
       profileOpen: false
     };
   },
-  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'paymentlistRoute', 'transcriptRoute', 'sponsorsRoute'],
+  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'paymentlistRoute', 'transcriptRoute', 'sponsorsRoute', 'notification', 'notificatonRoute', 'depositsRoute', 'withdrawalsRoute'],
   methods: {
     toggleMenu: function toggleMenu() {
       this.isOpen = !this.isOpen;
+    },
+    notifyclick: function notifyclick() {
+      this.open = false;
+      window.location.href = window.location.origin + '/notifications';
     }
   }
 });
@@ -37880,17 +37892,35 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.user.user_type != "admin"
-                    ? _c(
-                        "a",
-                        {
-                          staticClass:
-                            "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-                          attrs: { href: this.paymentlistRoute }
-                        },
-                        [_vm._v("Payments\n            ")]
-                      )
-                    : _vm._e(),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "mt-1 sm:ml-3 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                      attrs: { href: this.depositsRoute }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa  fa-plus-circle text-green-400"
+                      }),
+                      _vm._v("\n               deposits\n             ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "mt-1 sm:ml-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                      attrs: { href: this.withdrawalsRoute }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-minus-circle text-red-400 "
+                      }),
+                      _vm._v("\n               withdrawals\n            ")
+                    ]
+                  ),
                   _vm._v(" "),
                   _vm.user.user_type == "sponsor"
                     ? _c(
@@ -37909,7 +37939,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
+                            "sm:ml-20 px-4 pt-2  rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
                           attrs: { href: this.transcriptRoute }
                         },
                         [_vm._v("Submit Results\n            ")]
@@ -37932,14 +37962,27 @@ var render = function() {
                 {
                   staticClass:
                     "p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-                  attrs: { "aria-label": "Notifications" },
-                  on: {
-                    click: function($event) {
-                      _vm.menuOpen = false
-                    }
-                  }
+                  attrs: { type: "reset", "aria-label": "Notifications" },
+                  on: { click: _vm.notifyclick }
                 },
                 [
+                  _vm.notification != 0
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            " p-1 absolute inset-y-0 ml-3 sm:inset-y-2 sm:ml-4 sm:mt-2"
+                        },
+                        [
+                          _c(
+                            "span",
+                            { staticClass: " text-red-400 font-bold " },
+                            [_vm._v(_vm._s(_vm.notification))]
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
                     "svg",
                     {
@@ -38141,9 +38184,19 @@ var render = function() {
             {
               staticClass:
                 "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-              attrs: { href: this.paymentlistRoute }
+              attrs: { href: this.depositsRoute }
             },
-            [_vm._v("Payments\n      ")]
+            [_vm._v("deposits\n      ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+              attrs: { href: this.withdrawalsRoute }
+            },
+            [_vm._v("withdrawals\n      ")]
           )
         ])
       ]

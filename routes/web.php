@@ -38,7 +38,7 @@ Route::get('/admin', function ()
 {
     if(Auth::check()){
     if (Auth::user()->user_type == 'admin') {
-        return redirect()->route('dashboard.index');
+        return redirect()->route('deposit.index');
     }
   }
 });
@@ -61,11 +61,16 @@ Route::get('/admin', function ()
 Route::resource('profile/student', 'StudentController');
 Route::resource('profile/sponsor', 'SponsorController');
 Route::resource('plan', 'PlanController');
-Route::resource('Admin/adminpayments', 'AdminPaymentsController');
+
+// Route::resource('Admin/adminpayments', 'AdminPaymentsController');
+
 Route::resource('Admin/dashboard', 'AdminDashboardController');
 
 
 Route::resource('payment', 'PaymentController');
+Route::resource('deposit', 'DepositController');
+Route::resource('withdraw', 'WithdrawController');
+Route::resource('notifications', 'NotificationController');
 
 Route::resource('avatar', 'AvatarController');
 

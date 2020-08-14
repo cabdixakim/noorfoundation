@@ -30,7 +30,7 @@ class StudentController extends Controller
         $user = auth()->user();
         if ($user->user_type == 'student') {
             $student = Student::findOrFail($user->id);
-            $student->load('profile','payments','plan');
+            $student->load('profile','withdrawals','plan');
             $transcripts = $student->transcripts;
 
             if(!empty($student->getFirstMediaUrl('avatar'))){
@@ -107,7 +107,7 @@ class StudentController extends Controller
         if(!$student){
             $student = auth()->user()->id;
          }
-         $student->load('profile','payments','plan','transcripts');
+         $student->load('profile','withdrawals','plan','transcripts');
          $transcripts = $student->transcripts;
 
             if(!empty($student->getFirstMediaUrl('avatar'))){

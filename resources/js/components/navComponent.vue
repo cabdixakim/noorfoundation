@@ -28,17 +28,24 @@
             </a>
             <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
             </a>
-            <a :href="this.paymentlistRoute" v-if="user.user_type != 'admin'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Payments
+             <a :href="this.depositsRoute" class="mt-1 sm:ml-3 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+               <i class="fa  fa-plus-circle text-green-400"></i>
+               deposits
+             </a>
+             <a :href="this.withdrawalsRoute" class="mt-1 sm:ml-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+               <i class="fa fa-minus-circle text-red-400 "></i>
+               withdrawals
             </a>
             <a v-if="user.user_type == 'sponsor'" :href="this.paymentRoute" class="ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Donate Now
             </a>
-            <a v-if="user.user_type == 'student'" :href="this.transcriptRoute" class="ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Submit Results
+            <a v-if="user.user_type == 'student'" :href="this.transcriptRoute" class="sm:ml-20 px-4 pt-2  rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Submit Results
             </a>
           </div>
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <button @click="menuOpen = false" class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
+        <button type="reset" @click="notifyclick" class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" aria-label="Notifications">
+         <div v-if="notification != 0" class=" p-1 absolute inset-y-0 ml-3 sm:inset-y-2 sm:ml-4 sm:mt-2"> <span class=" text-red-400 font-bold ">{{notification}}</span></div>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
           </svg>
@@ -95,13 +102,14 @@
       </a>
       <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
       </a>
-      <a :href="this.paymentlistRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Payments
+      <a :href="this.depositsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">deposits
+      </a>
+      <a :href="this.withdrawalsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">withdrawals
       </a>
     </div>
   </div>
     <!-- a button that covers all screen to enable menu click away -->
   <!-- <button v-if="menuOpen" @click="menuOpen = false" tabindex="-1"  class="fixed w-full h-full inset-0 bg-black opacity-25"></button> -->
-
 </nav>
 </template>
 
@@ -125,12 +133,21 @@
            'studentsRoute',
            'paymentlistRoute',
            'transcriptRoute',
-           'sponsorsRoute'
+           'sponsorsRoute',
+           'notification',
+           'notificatonRoute',
+           'depositsRoute',
+           'withdrawalsRoute'
         ],
         
         methods: {
             toggleMenu() {
                 this.isOpen = !this.isOpen
+            },
+            notifyclick(){
+              this.open = false;
+              window.location.href = window.location.origin +'/notifications';
+              
             }
         }
     }

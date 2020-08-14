@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-20">
     @if (session('status'))
     <div class="flex justify-center items-center ">
       <div class="alert alert-danger   mb-0 mt-5" role="alert">

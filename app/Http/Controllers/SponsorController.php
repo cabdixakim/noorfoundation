@@ -28,7 +28,7 @@ class SponsorController extends Controller
         $user = auth()->user();
         if ($user->user_type == 'sponsor') {
             $sponsor = Sponsor::findOrFail($user->id);
-            $sponsor->load('profile','payments');
+            $sponsor->load('profile','deposits');
         
             if(!empty($sponsor->getFirstMediaUrl('avatar'))){
             if($sponsor->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
@@ -104,7 +104,7 @@ class SponsorController extends Controller
         if(!$sponsor){
             $sponsor = auth()->user()->id;
          }
-         $sponsor->load('profile','payments');
+         $sponsor->load('profile','deposits');
 
             if(!empty($sponsor->getFirstMediaUrl('avatar'))){
             if($sponsor->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){

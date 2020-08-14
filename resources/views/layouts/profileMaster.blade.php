@@ -64,8 +64,9 @@
         } else {
           $paymentRoute = '#section';
         }
-       
-    @endphp
+         
+        
+     @endphp
     <div id="app">
     <nav-component :user ="{{ $user }}" 
      create-plan-route="{{ route('plan.create')}}"
@@ -78,6 +79,10 @@
      students-route="{{route('sponsored-students.index')}}"
      sponsors-route="{{route('sponsors-list.index')}}"
     paymentlist-route="{{$paymentRoute}}"
+    notification = {{Auth::user()->unReadNotifications->count('id')}}
+    notification-route = {{route('notifications.index')}}
+    deposits-route = {{route('deposit.index')}}
+    withdrawals-route = {{route('withdraw.index')}}
      >
     </nav-component>
     </div>

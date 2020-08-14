@@ -26,10 +26,10 @@ class Student extends User{
   }
 
 
-  public function payments()
+  public function withdrawals()
   {
     # code...
-    return $this->hasMany(Payment::class, 'student_id')->where('status', 'delivered')->latest();
+    return $this->hasMany(Withdraw::class, 'user_id')->latest();
   }
 
   public function CurrentSemesterCredit()
@@ -48,8 +48,8 @@ class Student extends User{
   public function goal()
   {
      if($this->plan){
-    return $this->payments()->where(function($q){
-      $q->where(['semester'=>$this->plan->semester, 'status'=>'delivered']);
+    return $this->withdrawals()->where(function($q){
+      $q->where(['semester'=>$this->plan->semester]);
       $q->whereBetween( 'created_at',[new Carbon($this->plan->semester_start), new Carbon($this->plan->semester_end)]);
     })->sum('amount');
   }

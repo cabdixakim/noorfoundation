@@ -10,6 +10,7 @@ class Payment extends Model
     protected $fillable = [
          'student_id', 'amount','semester','status',
     ];
+    // 
 
     public function latestPayments()
     {
