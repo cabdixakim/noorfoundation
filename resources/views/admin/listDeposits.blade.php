@@ -22,7 +22,9 @@
       </div>
     </div>
    
-    
+    @if ($groupedData->isEmpty())
+    <h1 class="mt-5 text-center text-xl font-bold text-gray-400"> There are no deposits yet!</h1>
+@else
 @foreach ($groupedData as $key=>$deposits)
   <div class="sm:w-2/5 mt-3 text-center">
   <span class="font-bold text-md"> {{\Carbon\Carbon::parse($key)->format('F , Y')}} </span> <span class="pl-2 italic">Total:</span> <span class="font-bold text-green-400 font-mono pl-2"> + ${{$deposits->sum('amount')}}</span> 
@@ -53,7 +55,7 @@
     </table>
     </div>
     @endforeach
-    
+    @endif
    
 
 </div>
