@@ -20,7 +20,7 @@
     </div>
    
     @if ($groupedData->isEmpty())
-    <h1 class="mt-5 text-center text-xl font-bold text-gray-400"> There are no withdrawals yet!</h1>
+    <h1 class="mt-5 text-center text-xl font-bold text-gray-400"> There are no deposits yet!</h1>
     @else
     @foreach ($groupedData as $key=>$deposits)
       <div class="sm:w-2/5 mt-3 text-center">

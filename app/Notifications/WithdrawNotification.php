@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WithdrawNotification extends Notification
+class WithdrawNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,9 +16,12 @@ class WithdrawNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $data;
+
+    public function __construct($data)
     {
         //
+        $this->data = $data;
     }
 
     /**
@@ -29,7 +32,7 @@ class WithdrawNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -38,13 +41,7 @@ class WithdrawNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
+   
 
     /**
      * Get the array representation of the notification.
@@ -56,6 +53,8 @@ class WithdrawNotification extends Notification
     {
         return [
             //
+            'username'=> $this->data->student->username,
+            'amount'=> $this->data->amount,
         ];
     }
 }

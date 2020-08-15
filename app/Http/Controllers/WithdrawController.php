@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Deposit;
 use App\Student;
 use App\Withdraw;
@@ -9,6 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\createWithdrawRequest;
+use App\Notifications\WithdrawNotification;
+use Illuminate\Support\Facades\Notification;
 
 class WithdrawController extends Controller
 {
@@ -61,7 +64,12 @@ class WithdrawController extends Controller
     {
         //
         $student = Student::find($request->student_id);
-        $student->withdrawals()->create($request->all());
+        $withdrawal = $student->withdrawals()->create($request->all());
+         
+        if($withdrawal){
+            $users = User::where('user_type', '!=', 'admin')->get();
+            Notification::send($users, new WithdrawNotification($withdrawal));
+        }
         return redirect()->back()->with('status', 'Money withdrawn successfully');
     }
 

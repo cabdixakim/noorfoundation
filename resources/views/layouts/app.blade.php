@@ -10,11 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-     <!--  jQuery -->
-     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-     <!-- Bootstrap Date-Picker Plugin -->
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+   
     
     
 
@@ -31,7 +27,8 @@
     @stack('styles')
 </head>
 <body>
-    <div id="app ">
+    <div id="app"></div>
+    <div id="firstEl">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-20">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -47,17 +44,17 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check() && Auth::user()->user_type == 'admin')
                              
-                        <a class="navbar-link   sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('deposit.index') }}">
+                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('deposit.index') }}">
                             <i class="fa  fa-plus-circle text-green-400"></i>
                             <span class="nav-link-text">deposits</span>
                         </a>
-                        <a class="navbar-link   sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('withdraw.index') }}">
+                        <a class="navbar-link mt-2 sm:mt-0  sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('withdraw.index') }}">
                             <i class="fa fa-minus-circle text-red-400 "></i>
                             <span class="nav-link-text">withdrawals</span>
                        
                         </a>
                    
-                        <a class="navbar-link  sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsored-students.index')}}">
+                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsored-students.index')}}">
                             <i class="fa fa-fw fa-users"></i>
                             <span class="nav-link-text">students</span>
                         </a>
@@ -112,6 +109,12 @@
            
       @yield('content')
             
+ {{-- scripts --}}
+ <script src="{{ asset('js/app.js') }}" defer></script>
+ <!--  jQuery -->
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+ <!-- Bootstrap Date-Picker Plugin -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
 </body>
 </html>

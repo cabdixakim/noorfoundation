@@ -95,6 +95,9 @@
     </div>
     <div id="home" class="tab-pane  ">
       {{-- <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">withdrawals</span> </div> --}}
+      @if ($student->withdrawals->isEmpty())
+        <h1 class="mt-5 text-xl font-bold text-gray-400"> This student did not receive any money yet!</h1>
+      @else
       @foreach ($student->withdrawals as $withdrawal)
       <div class="mb-2 flex justify-start bg-gray-300 border-l border-r border-b border-t border-transparent border-gray-600 p-2  ">
         <div class="sm:flex sm:justify-between"> 
@@ -104,7 +107,7 @@
         
       </div>
       @endforeach
-   
+      @endif
       
       
     </div>

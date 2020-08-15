@@ -72,7 +72,7 @@ class DepositController extends Controller
             'created_at'=> $date,
             'updated_at'=> $date,
         ]);
-        $users = User::all();
+        $users = User::where('user_type', '!=', 'admin')->get();
         if($deposit){
 
             Notification::send( $users, new DepositNotification($deposit));

@@ -50400,9 +50400,11 @@ Vue.component('nav-component', __webpack_require__(/*! ./components/navComponent
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app',
-  components: {}
+window.addEventListener('load', function () {
+  var app = new Vue({
+    el: '#app',
+    components: {}
+  });
 });
 
 /***/ }),

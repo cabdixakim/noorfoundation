@@ -42,13 +42,13 @@
          @if ($notification->data['username'] == Auth::user()->username)
          <div class="flex justify-between">
                <p><span class="font-bold pr-1 border-b border-gray-300">You</span> have Withdrawn</p>
-            <p><span class="text-green-400 font-bold"> + ${{$notification->data['amount']}}</span></p>
+            <p><span class="text-red-400 font-bold"> - ${{$notification->data['amount']}}</span></p>
          </div>
              
          @else
          <div class="flex justify-between border-b border-gray-300">
               <p><span class="font-bold pr-1">{{$notification->data['username']}}</span> has Withdrawn</p>
-              <p><span class="text-green-400 font-bold"> + ${{$notification->data['amount']}}</span></p>
+              <p><span class="text-red-400 font-bold"> - ${{$notification->data['amount']}}</span></p>
           </div>
          @endif
          @endif

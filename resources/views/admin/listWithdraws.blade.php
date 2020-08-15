@@ -10,12 +10,12 @@
   
     <div class="flex border-b border-gray-300 ">
       <div class=" flex justify-between m-auto  ">
-        <div class=" -ml-48 ">
+        <div class=" sm:-ml-48 mr-4 ">
           <p class="text-md text-gray-800 font-bold">Total Balance</p>
          <p class="text-lg text-green-400 font-bold "> + $ {{number_format($balance,0,',',',')}}</p>
          
        </div>
-      <a href="{{route('withdraw.create')}}"  class="mt-2 -mr-64 sm:mt-1  mb-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-red-400  hover:text-white  hover:bg-red-700 focus:outline-none focus:text-white focus:bg-red-500 transition duration-150 ease-in-out">
+      <a href="{{route('withdraw.create')}}"  class="mt-2 sm:-mr-64 sm:mt-1  mb-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-red-400  hover:text-white  hover:bg-red-700 focus:outline-none focus:text-white focus:bg-red-500 transition duration-150 ease-in-out">
          <i class="fa fa-minus-circle"></i> withdraw
         </a>
 
@@ -34,7 +34,7 @@
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Date </th>
-                  <th scope="col">withdrawaled by</th>
+                  <th scope="col">withdrawn by</th>
                   <th scope="col">Amount</th>
                 </tr>
               </thead>
