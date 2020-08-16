@@ -49,7 +49,7 @@ class Student extends User{
   {
      if($this->plan){
     return $this->withdrawals()->where(function($q){
-      $q->where(['semester'=>$this->plan->semester]);
+      $q->where('semester',$this->plan->semester);
       $q->whereBetween( 'created_at',[new Carbon($this->plan->semester_start), new Carbon($this->plan->semester_end)]);
     })->sum('amount');
   }
@@ -59,6 +59,12 @@ class Student extends User{
     
     if ($this->plan) {
       return $this->goal() < $this->plan->amount_per_semester ;
+    }
+  }
+
+  public function HasNotGraduated(){
+    if ($this->plan) {
+      return  $this->plan->graduation_date > Carbon::now();
     }
   }
 

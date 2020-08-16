@@ -2056,6 +2056,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38173,6 +38175,18 @@ var render = function() {
                 {
                   staticClass:
                     "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.sponsorsRoute }
+                },
+                [_vm._v("Sponsors\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user.user_type == "sponsor"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                   attrs: { href: this.studentsRoute }
                 },
                 [_vm._v("Students\n      ")]
@@ -50610,8 +50624,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mohammed\Desktop\noorFoundation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mohammed\Desktop\noorFoundation\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\cabdi\OneDrive\Desktop\noorfoundation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\cabdi\OneDrive\Desktop\noorfoundation\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
