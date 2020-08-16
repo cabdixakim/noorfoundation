@@ -28,18 +28,18 @@ class SponsoredStudentsController extends Controller
                 // foreach ($students as $key => $value) {
                 //    dd($value->student);
                 // }
-                $sponsoredstudents = [];
-                $payments = $sponsor->payments;
-                foreach ($payments as $key => $value) {
-                    if (!in_array($value->student, $sponsoredstudents)) {
-                        # code...
-                        $sponsoredstudents[] = $value->student;
-                    }
-                }
+                // $sponsoredstudents = [];
+                // $payments = $sponsor->payments;
+                // foreach ($payments as $key => $value) {
+                //     if (!in_array($value->student, $sponsoredstudents)) {
+                //         # code...
+                //         $sponsoredstudents[] = $value->student;
+                //     }
+                // }
                 
                 $allStudents = Student::all();
             
-                return view('sponsor.sponsoredstudents',compact('sponsoredstudents','allStudents'));
+                return view('sponsor.sponsoredstudents',compact('allStudents'));
             } elseif(auth()->user()->user_type == 'admin'){
                 $allStudents = Student::all();
                 $bannedStudents = Student::onlyTrashed()->get();

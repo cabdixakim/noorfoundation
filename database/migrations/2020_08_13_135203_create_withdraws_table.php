@@ -16,7 +16,7 @@ class CreateWithdrawsTable extends Migration
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->bigInteger('semester');
+            $table->string('semester');
             // $table->string('status')->default('pending');
             $table->integer('amount');
             $table->timestamps();

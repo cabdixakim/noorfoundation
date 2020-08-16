@@ -4,13 +4,13 @@
  {{-- Tabs section --}}
  <div class="container mt-6 sm:mt-16 " id="section">
   <ul class="nav nav-tabs ml-8 sm:ml-64 ">
-    <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#home">Sponsored Students</a></li>
+    {{-- <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#home">Sponsored Students</a></li> --}}
     <li class="pl-8 sm:pl-20 sm:pl-64 font-bold sm:text-lg"><a data-toggle="tab" class="hover:text-gray-800" href="#menu1">All students</a></li>
     
   </ul>
 
   <div class="tab-content ml-6 sm:ml-64 mt-6">
-    @if (Auth::user()->user_type == 'sponsor')
+    {{-- @if (Auth::user()->user_type == 'sponsor')
     <div id="home" class="tab-pane active ">
       <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">Sponsored Students</span> </div>
       @foreach ($sponsoredstudents as $student)
@@ -24,8 +24,8 @@
       </div>
       @endforeach 
     </div>    
-    @endif
-    <div id="menu1" class="tab-pane fade">
+    @endif --}}
+    <div id="menu1" class="tab-pane active">
       <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">All students</span> </div>
       @foreach ($allStudents as $student)
           <div class="flex justify-between border-l border-r border-b border-t border-transparent border-gray-600 p-2 bg-gray-300 ">
