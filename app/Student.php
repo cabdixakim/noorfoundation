@@ -67,5 +67,10 @@ class Student extends User{
       return  $this->plan->graduation_date > Carbon::now();
     }
   }
+  public function SemesteDidNotEnd(){
+    if ($this->plan) {
+      return  $this->plan->semester_end > Carbon::now();
+    }
+  }
 
 }
