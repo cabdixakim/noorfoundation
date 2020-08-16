@@ -100,6 +100,8 @@
       </a>
       <a :href="this.transcriptRoute" v-if="user.user_type == 'student'" class="mt-2 sm:mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-green-400 hover:text-white hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Sumbit Results
       </a>
+      <a :href="this.sponsorsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Sponsors
+      </a>
       <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
       </a>
       <a :href="this.depositsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">deposits
