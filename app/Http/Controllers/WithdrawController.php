@@ -51,7 +51,7 @@ class WithdrawController extends Controller
     {
         //
         $students = Student::find(51);
-       dd($students);
+       dd($students->plan);
         return view('admin.createWithdraw',compact('students'));
     }
 
