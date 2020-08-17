@@ -24,7 +24,7 @@
               @foreach ($students as $student)
               @if (!empty($student->plan))
                 @if ($student->HasNotReachedGoal() || $student->HasNotGraduated() || $student->SemesteDidNotEnd() )
-                  <option id="Student" data-semester="{{$student->plan->semester}}" value="{{$student->id}}"  type="text" placeholder="Abdihakim" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->username}} {{$student->plan->semester, $student->username}}</option>
+                  <option id="Student" data-semester="{{$student->plan->semester}}" value="{{$student->id}}"  type="text" placeholder="Abdihakim" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->username}} </option>
                  
                   @endif
                     
@@ -63,7 +63,7 @@
               var semester = e.options[e.selectedIndex].getAttribute("data-semester");
               var studentsem = document.getElementById("StudentSemester");
               studentsem.value = semester;
-              console.log(studentsem.value);
+              // console.log(studentsem.value);
             }
          </script>
      @endpush

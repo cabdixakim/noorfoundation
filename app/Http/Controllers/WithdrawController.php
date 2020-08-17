@@ -64,7 +64,6 @@ class WithdrawController extends Controller
     {
         //
         $student = Student::find($request->student_id);
-        dd($student, $request->all());
         $withdrawal = $student->withdrawals()->create($request->all());
          
         if($withdrawal){
