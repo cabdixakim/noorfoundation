@@ -22,7 +22,7 @@
             <select onchange="SelectSemester(this)" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"   name="student_id">
               <option value="">choose a student</option>
               @foreach ($students as $student)
-              @if ($student->plan->isNotEmpty())
+              @if (!empty($student->plan))
                 @if ($student->HasNotReachedGoal() || $student->HasNotGraduated() || $student->SemesteDidNotEnd() )
                   <option id="Student" data-semester="{{$student->plan->semester}}" value="{{$student->id}}"  type="text" placeholder="Abdihakim" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->username}}</option>
                  @endif
