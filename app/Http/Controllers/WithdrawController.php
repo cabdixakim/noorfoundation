@@ -50,8 +50,10 @@ class WithdrawController extends Controller
     public function create()
     {
         //
-        $students = Student::find(51);
-       dd($students->plan);
+        $students = Student::all();
+        foreach($students as $student){
+              dd($student);
+        }
         return view('admin.createWithdraw',compact('students'));
     }
 
