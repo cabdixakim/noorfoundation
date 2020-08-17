@@ -63,7 +63,7 @@
               var semester = e.querySelector('#Student').getAttribute("data-semester");
               var studentsem = document.getElementById("StudentSemester");
               studentsem.value = semester;
-
+              console.log(studentsem.value);
             }
          </script>
      @endpush
