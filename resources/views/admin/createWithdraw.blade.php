@@ -25,7 +25,8 @@
               @if (!empty($student->plan))
                 @if ($student->HasNotReachedGoal() || $student->HasNotGraduated() || $student->SemesteDidNotEnd() )
                   <option id="Student" data-semester="{{$student->plan->semester}}" value="{{$student->id}}"  type="text" placeholder="Abdihakim" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->username}}</option>
-                 @endif
+                 {{$student->plan->semester, $student->username}}
+                  @endif
                     
               @endif
                   
@@ -46,7 +47,7 @@
               <p class="text-red-500 text-xs italic">{{$message}}</p>
               @enderror   
           </div>
-          <input id="StudentSemester" type="hidden" value="2" name="semester" >
+          <input id="StudentSemester" type="hidden" value="{{old('semester')}}" name="semester" >
           
           <div class="flex items-center justify-between">
             <button class="bg-red-400  sm:text-gray-100 font-bold py-2 whitespace-no-wrap px-4 rounded focus:outline-none focus:shadow-outline hover:bg-red-600" type="submit">
