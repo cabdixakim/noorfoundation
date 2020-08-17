@@ -19,7 +19,7 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="student">
               student
             </label>
-            <select onchange="SelectSemester(this)" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"   name="student_id">
+            {{-- <select onchange="SelectSemester(this)" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"   name="student_id">
               <option value="">choose a student</option>
               @foreach ($students as $student)
               @if (!empty($student->plan))
@@ -30,7 +30,7 @@
               @endif
                   
               @endforeach
-            </select>
+            </select> --}}
             @error('student_id')
             <p class="text-red-500 text-xs italic">Please choose a student.</p>
             @enderror
@@ -57,13 +57,13 @@
       </div>
      @push('scripts')
          <script >
-            function SelectSemester(e) {
-              // var semester = $(this).hide();
-              var semester = e.querySelector('#Student').getAttribute("data-semester");
-              var studentsem = document.getElementById("StudentSemester");
-              studentsem.value = semester;
+            // function SelectSemester(e) {
+            //   // var semester = $(this).hide();
+            //   var semester = e.querySelector('#Student').getAttribute("data-semester");
+            //   var studentsem = document.getElementById("StudentSemester");
+            //   studentsem.value = semester;
 
-            }
+            // }
          </script>
      @endpush
  

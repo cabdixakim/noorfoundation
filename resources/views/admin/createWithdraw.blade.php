@@ -28,7 +28,7 @@
                  
                   @endif
                     
-              @endif
+               @endif
                   
               @endforeach
             </select>
@@ -60,10 +60,10 @@
          <script >
             function SelectSemester(e) {
               // var semester = $(this).hide();
-              var semester = querySelector('#Student').getAttribute("data-semester");
-              var studentsem = document.getElementById("StudentSemester");
-              studentsem.value = semester;
-              console.log(studentsem.value);
+              var semester = e.target.options[e.target.selectedIndex].getAttribute("data-semester");
+              // var studentsem = document.getElementById("StudentSemester");
+              // studentsem.value = semester;
+              console.log(semester);
             }
          </script>
      @endpush
