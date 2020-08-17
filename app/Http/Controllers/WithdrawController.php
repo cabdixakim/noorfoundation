@@ -51,7 +51,7 @@ class WithdrawController extends Controller
     {
         //
         $students = Student::all();
-        foreach($students as $studdent){
+        foreach($students as $student){
               dd($student->plan);
         }
         return view('admin.createWithdraw',compact('students'));
