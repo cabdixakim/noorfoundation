@@ -60,7 +60,7 @@
          <script >
             function SelectSemester(e) {
               // var semester = $(this).hide();
-              var semester = e.target.options[e.target.selectedIndex].getAttribute("data-semester");
+              var semester = e.options[e.selectedIndex].getAttribute("data-semester");
               // var studentsem = document.getElementById("StudentSemester");
               // studentsem.value = semester;
               console.log(semester);
