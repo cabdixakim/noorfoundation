@@ -10,7 +10,7 @@ class SponsorsListController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth','admin','sponsor']);
+        $this->middleware(['auth','verified','admin','sponsor']);
  
     }
     /**
