@@ -55,6 +55,9 @@ class PlanController extends Controller
         if (!$student->plan) {
             # code...
             $student->plan()->create($data);
+            $student->plansetting()->update([
+                'status'=> 'disabled',
+            ]);
             if(empty($student->getFirstMediaUrl('avatar'))){
             return redirect()->route('avatar.create')->with('status', 'Plan added successfully! please add a profile picture');
             } else {

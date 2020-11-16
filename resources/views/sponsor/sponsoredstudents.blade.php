@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.profileMaster')
 @section('content')
 <!-- component -->
  {{-- Tabs section --}}
@@ -9,7 +9,7 @@
     
   </ul>
 
-  <div class="tab-content ml-6 sm:ml-64 mt-6">
+  <div class="tab-content ml-6 sm:ml-32 mt-6">
     {{-- @if (Auth::user()->user_type == 'sponsor')
     <div id="home" class="tab-pane active ">
       <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">Sponsored Students</span> </div>
@@ -26,7 +26,7 @@
     </div>    
     @endif --}}
     <div id="menu1" class="tab-pane active">
-      <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">All students</span> </div>
+      {{-- <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">All students</span> </div> --}}
       @foreach ($allStudents as $student)
          
           <div class="flex justify-between border-l border-r border-b border-t border-transparent border-gray-600 p-2 bg-gray-300 ">

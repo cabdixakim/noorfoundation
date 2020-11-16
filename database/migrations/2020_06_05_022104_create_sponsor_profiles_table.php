@@ -20,7 +20,7 @@ class CreateSponsorProfilesTable extends Migration
             $table->string('middlename');
             $table->string('lastname');
             $table->string('country');
-            $table->bigInteger('phone');
+            $table->string('phone');
             $table->string('avatar')->nullable();
             $table->index('user_id');
             $table->timestamps();

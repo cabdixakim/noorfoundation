@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\AddPlanSettingForStudent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        User::observe(AddPlanSettingForStudent::class);
         //tailwind pagination styles
         Paginator::useTailwind();
 

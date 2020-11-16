@@ -74,9 +74,11 @@
      logout-route="{{route( 'logout')}}" 
     payment-route="{{route('payment.create')}}"
     transcript-route="{{route('transcript.create')}}"
+    receipt-route="{{route('receipt.create')}}"
      show-profile="{{$ProfileIndexRoute}}"
      avatar="{{ $avatar ?? '' }}"
      students-route="{{route('sponsored-students.index')}}"
+     graduated-route="{{route('graduated-students.index')}}"
      sponsors-route="{{route('sponsors-list.index')}}"
     paymentlist-route="{{$paymentRoute}}"
     notification = {{Auth::user()->unReadNotifications->count('id')}}

@@ -26,19 +26,25 @@
             
             <a :href="this.sponsorsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Sponsors
             </a>
-            <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
+            <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Current students
             </a>
-             <a v-if="user.user_type == 'sponsor'" :href="this.depositsRoute" class="mt-1 sm:ml-3 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+            <a :href="this.graduatedRoute" v-if="user.user_type == 'sponsor'" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Graduated students
+            </a>
+             <a v-if="user.user_type == 'sponsor'" :href="this.depositsRoute" class="mt-1 sm:ml-3 block px-3  rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                <i class="fa  fa-plus-circle text-green-400"></i>
                deposits
              </a>
-             <a v-if="user.user_type == 'sponsor'" :href="this.withdrawalsRoute" class="mt-1 sm:ml-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+             <a v-if="user.user_type == 'sponsor'" :href="this.withdrawalsRoute" class="mt-1 sm:ml-2 block px-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                <i class="fa fa-minus-circle text-red-400 "></i>
                withdrawals
             </a>
             <a v-if="user.user_type == 'sponsor'" :href="this.paymentRoute" class="ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Donate Now
             </a>
             <a v-if="user.user_type == 'student'" :href="this.transcriptRoute" class="sm:ml-20 px-4 pt-2  rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Submit Results
+            </a>
+            <a v-if="user.user_type == 'student'" :href="this.receiptRoute" class="sm:ml-8 px-4 pt-2  rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">
+              <i class="fa  fa-plus-circle text-green-400"></i>
+              Add receipt
             </a>
           </div>
         </div>
@@ -104,9 +110,9 @@
       </a>
       <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
       </a>
-      <a :href="this.depositsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">deposits
+      <a v-if="user.user_type == 'sponsor'" :href="this.depositsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">deposits
       </a>
-      <a :href="this.withdrawalsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">withdrawals
+      <a v-if="user.user_type == 'sponsor'" :href="this.withdrawalsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">withdrawals
       </a>
     </div>
   </div>
@@ -133,8 +139,10 @@
            'avatar',
            'paymentRoute',
            'studentsRoute',
+           'graduatedRoute',
            'paymentlistRoute',
            'transcriptRoute',
+           'receiptRoute',
            'sponsorsRoute',
            'notification',
            'notificatonRoute',

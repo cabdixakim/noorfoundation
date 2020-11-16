@@ -19,10 +19,18 @@ class Student extends User{
   {
     return $this->hasOne(Plan::class);
   }
+  public function planSetting()
+  {
+    return $this->hasOne(PlanSetting::class);
+  }
 
   public function transcripts()
   {
      return $this->hasMany(Transcript::class)->latest();
+  }
+  public function studentreceipts()
+  {
+     return $this->hasMany(StudentReceipt::class)->latest();
   }
 
 

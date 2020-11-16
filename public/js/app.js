@@ -2058,6 +2058,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2065,7 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
       profileOpen: false
     };
   },
-  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'paymentlistRoute', 'transcriptRoute', 'sponsorsRoute', 'notification', 'notificatonRoute', 'depositsRoute', 'withdrawalsRoute'],
+  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'graduatedRoute', 'paymentlistRoute', 'transcriptRoute', 'receiptRoute', 'sponsorsRoute', 'notification', 'notificatonRoute', 'depositsRoute', 'withdrawalsRoute'],
   methods: {
     toggleMenu: function toggleMenu() {
       this.isOpen = !this.isOpen;
@@ -37939,7 +37945,7 @@ var render = function() {
                             "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                           attrs: { href: this.studentsRoute }
                         },
-                        [_vm._v("Students\n            ")]
+                        [_vm._v("Current students\n            ")]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -37948,7 +37954,19 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "mt-1 sm:ml-3 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                            "ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                          attrs: { href: this.graduatedRoute }
+                        },
+                        [_vm._v("Graduated students\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.user_type == "sponsor"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "mt-1 sm:ml-3 block px-3  rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                           attrs: { href: this.depositsRoute }
                         },
                         [
@@ -37965,7 +37983,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "mt-1 sm:ml-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                            "mt-1 sm:ml-2 block px-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                           attrs: { href: this.withdrawalsRoute }
                         },
                         [
@@ -37998,6 +38016,23 @@ var render = function() {
                           attrs: { href: this.transcriptRoute }
                         },
                         [_vm._v("Submit Results\n            ")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.user_type == "student"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "sm:ml-8 px-4 pt-2  rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
+                          attrs: { href: this.receiptRoute }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa  fa-plus-circle text-green-400"
+                          }),
+                          _vm._v("\n              Add receipt\n            ")
+                        ]
                       )
                     : _vm._e()
                 ])
@@ -38246,25 +38281,29 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-              attrs: { href: this.depositsRoute }
-            },
-            [_vm._v("deposits\n      ")]
-          ),
+          _vm.user.user_type == "sponsor"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.depositsRoute }
+                },
+                [_vm._v("deposits\n      ")]
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
-              attrs: { href: this.withdrawalsRoute }
-            },
-            [_vm._v("withdrawals\n      ")]
-          )
+          _vm.user.user_type == "sponsor"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.withdrawalsRoute }
+                },
+                [_vm._v("withdrawals\n      ")]
+              )
+            : _vm._e()
         ])
       ]
     )

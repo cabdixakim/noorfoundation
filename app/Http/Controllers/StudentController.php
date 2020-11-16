@@ -32,6 +32,7 @@ class StudentController extends Controller
             $student = Student::findOrFail($user->id);
             $student->load('profile','withdrawals','plan');
             $transcripts = $student->transcripts;
+            $receipts = $student->studentreceipts;
 
             if(!empty($student->getFirstMediaUrl('avatar'))){
             if($student->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
@@ -42,7 +43,7 @@ class StudentController extends Controller
         } else {
             $avatar = null;
         }
-           return view('profiles.StudentProfile',compact('student','avatar', 'transcripts'));
+           return view('profiles.StudentProfile',compact('student','avatar', 'transcripts','receipts'));
         } 
         return redirect('/');
     }
@@ -109,6 +110,7 @@ class StudentController extends Controller
          }
          $student->load('profile','withdrawals','plan','transcripts');
          $transcripts = $student->transcripts;
+         $receipts = $student->studentreceipts;
 
             if(!empty($student->getFirstMediaUrl('avatar'))){
             if($student->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
@@ -119,7 +121,7 @@ class StudentController extends Controller
         } else {
             $avatar = null;
         }
-         return view('profiles.StudentProfile', compact('student','avatar','transcripts'));
+         return view('profiles.StudentProfile', compact('student','avatar','transcripts','receipts'));
     }
 
     /**
@@ -157,7 +159,6 @@ class StudentController extends Controller
         
         $user = auth()->user()->id;
         $student = Student::findOrFail($user);
-        $this->authorize('update', $student->profile);
         $data = $request->except('_token','_method'); 
          
         if($student->profile){
@@ -187,6 +188,6 @@ class StudentController extends Controller
               $student->restore();
               return redirect()->back();
            }
-        }
+        }                                                     
     }
 }

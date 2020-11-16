@@ -63,7 +63,7 @@
   <div class="container mt-6 sm:mt-16 " id="section">
   <ul class="nav nav-tabs ml-8 sm:ml-64 ">
     <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#menu1">Latest exam results</a></li>
-    <li class="pl-8 sm:pl-20 sm:pl-64 font-bold sm:text-lg"><a data-toggle="tab" class="hover:text-gray-800" href="#home"> Latest withdrawals</a></li>
+    <li class="pl-8 sm:pl-20 sm:pl-64 font-bold sm:text-lg"><a data-toggle="tab" class="hover:text-gray-800" href="#home"> Latest receipts</a></li>
     
   </ul>
 
@@ -95,15 +95,22 @@
     </div>
     <div id="home" class="tab-pane  ">
       {{-- <div class="uppercase mb-2 font-bold"> <span class="border-b border-green-400">withdrawals</span> </div> --}}
-      @if ($student->withdrawals->isEmpty())
-        <h1 class="mt-5 text-xl font-bold text-gray-400"> This student did not receive any money yet!</h1>
+      @if ($receipts->isEmpty())
+        <h1 class="mt-5 text-xl font-bold text-gray-400"> This student did post any receipts yet!</h1>
       @else
-      @foreach ($student->withdrawals as $withdrawal)
+      @foreach ($receipts as $receipt)
       <div class="mb-2 flex justify-start bg-gray-300 border-l border-r border-b border-t border-transparent border-gray-600 p-2  ">
         <div class="sm:flex sm:justify-between"> 
-        <p><span class="text-lg font-bold font-mono">Date withdrawn:</span> <span class="text-gray-500 font-bold text-lg italic  border-green-400">{{ \Carbon\Carbon::parse($withdrawal->created_at)->format('l jS \of F Y')}}</span></p> 
-        <p> <span class="text-lg font-bold font-mono sm:ml-32">Amount withdrawn: <span class="text-sm text-gray-500">USD$</span> </span> <span class="text-red-400 border font-bold text-lg italic bg-gray-200 border-green-400"> -{{number_format($withdrawal->amount,0,',',',')}}</span> </p> 
-        </div>
+        <p><span class="text-lg font-bold font-mono">Date paid:</span> <span class="text-gray-900 font-bold text-sm italic  border-green-400">{{ \Carbon\Carbon::parse($receipt->date)->format('l jS \of F Y')}}</span></p> 
+        <p class=""> <span class="text-lg font-bold font-mono sm:ml-32">Amount: <span class="text-sm text-gray-500 italic">$</span><span class="text-green-500 text-lg">{{number_format($receipt->amount,0,',',',')}}</span> </p>
+        @if (!empty($receipt->getFirstMediaUrl('receipts')))
+
+
+        
+        <a class="font-bold text-sm text-blue-9 underline sm:ml-8" href="{{$receipt->getFirstMediaUrl('receipts')}}"> See receipt</a>
+    
+ @endif
+      </div>
         
       </div>
       @endforeach

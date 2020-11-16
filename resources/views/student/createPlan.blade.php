@@ -99,15 +99,15 @@
    
       <ul class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-16 mt-2 sm:mx-auto sm:w-2/5 ">
        <div class="sm:flex items-center justify-end sm:mb-2 mb-8">
-         @can('edit-plan',$student->id)
+         @if($student->plansetting->status == 'enabled')
          <a href="{{route('plan.edit',$student->id)}}" class="bg-green-400 text-gray-100 hover:text-gray-100 font-bold py-2 whitespace-no-wrap px-4 rounded focus:outline-none focus:shadow-outline hover:bg-green-600" >
              Update Plan
            </a>   
-         @endcan
-         @cannot('edit-plan', $student->id)
-         <p class="text-red-500 text-xs italic">you will be able to update plan when your semester ends</p>
+         
+         @else
+         <p class="text-red-500 text-xs italic">Request from an admin to update</p>
 
-         @endcannot
+         @endif
        </div>
         <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">
          <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="firstname">

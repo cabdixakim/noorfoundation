@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Sponsor;
 use App\Student;
+use Carbon\Carbon;
+use App\GraduatedStudent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class SponsoredStudentsController extends Controller
+class GraduatedStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,38 +17,24 @@ class SponsoredStudentsController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            # code...
-            if(auth()->user()->user_type == 'sponsor'){
-                $user = auth()->user()->id;
-                $sponsor = Sponsor::findOrFail($user);
-                // dd($sponsor->listStudents());
+        $students = Student::with(['profile','plan'])->orderBy('created_at', 'desc')->get();
+        $graduatedStudents = GraduatedStudent::latest()->get();
+        $graduated = collect([]);
+        
+        foreach ($students as $student) {
+            if($student->plan->graduation_date < Carbon::now()){
 
-                // $students = $sponsor->listStudents();
-                // foreach ($students as $key => $value) {
-                //    dd($value->student);
-                // }
-                // $sponsoredstudents = [];
-                // $payments = $sponsor->payments;
-                // foreach ($payments as $key => $value) {
-                //     if (!in_array($value->student, $sponsoredstudents)) {
-                //         # code...
-                //         $sponsoredstudents[] = $value->student;
-                //     }
-                // }
-                
-                $allStudents = Student::all();
-            
-                return view('sponsor.sponsoredstudents',compact('allStudents'));
-            } elseif(auth()->user()->user_type == 'admin'){
-                $allStudents = Student::with(['profile', 'plan','plansetting'])->get();
-                $bannedStudents = Student::onlyTrashed()->get();
-                //  dd($allStudents[0]->plansetting->status);
-                return view('admin.adminstudents',compact('allStudents','bannedStudents'));
+                $graduated->push($student);
             }
-            return redirect('/');
+           
         }
-
+        foreach ($graduatedStudents as $student) {
+            $graduated->push($student);
+        }
+    //   foreach ($graduated as $key => $value) {
+    //      dd($key);
+    //   }
+             return view('student.studentslist', compact('graduated'));
     }
 
     /**
@@ -59,6 +45,8 @@ class SponsoredStudentsController extends Controller
     public function create()
     {
         //
+        
+        return view('student.createGraduatedStudentProfile');
     }
 
     /**
@@ -69,7 +57,19 @@ class SponsoredStudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //;
+        $data = $request->validate([
+            'firstname'=> 'required',
+            'middlename'=> 'required',
+            'lastname'=> 'required',
+            'university'=> 'required',
+            'faculty'=> 'required',
+            'start_date'=> 'required',
+            'graduation_date'=> 'required',
+
+        ]);
+        GraduatedStudent::create($data);
+        return redirect('/') ;
     }
 
     /**

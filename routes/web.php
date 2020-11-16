@@ -65,6 +65,7 @@ Route::resource('plan', 'PlanController');
 // Route::resource('Admin/adminpayments', 'AdminPaymentsController');
 
 Route::resource('Admin/dashboard', 'AdminDashboardController');
+Route::resource('Admin/student-settings', 'AdminStudentController');
 
 
 Route::resource('payment', 'PaymentController');
@@ -75,5 +76,7 @@ Route::resource('notifications', 'NotificationController');
 Route::resource('avatar', 'AvatarController');
 
 Route::resource('sponsored-students', 'SponsoredStudentsController');
+Route::resource('graduated-students', 'GraduatedStudentController');
 Route::resource('sponsors-list', 'SponsorsListController');
 Route::resource('transcript', 'TranscriptController');
+Route::resource('receipt', 'StudentReceiptController');
