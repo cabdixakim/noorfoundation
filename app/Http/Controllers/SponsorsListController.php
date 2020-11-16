@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class SponsorsListController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','admin','sponsor']);
+ 
+    }
     /**
      * Display a listing of the resource.
      *
