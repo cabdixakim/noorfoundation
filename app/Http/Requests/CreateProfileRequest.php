@@ -30,7 +30,7 @@ class CreateProfileRequest extends FormRequest
             'firstname'=> 'required|string',
             'middlename'=> 'required|string',
             'lastname'=> 'required|string',
-            'phone'=> 'required|phone:'.$valdatePhone,
+            'phone'=> 'required|integer|phone:'.$valdatePhone,
             'country'=> ['required'],
         ];
     }
