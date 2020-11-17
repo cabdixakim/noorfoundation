@@ -105,7 +105,7 @@
            </a>   
          
          @else
-         <p class="text-red-500 text-xs italic">Request from an admin to update</p>
+         <p class="text-red-500 text-xs italic">contact an admin to update plan</p>
 
          @endif
        </div>
