@@ -1,7 +1,7 @@
 @extends('layouts.profileMaster')
 @section('content')
 <!-- component -->
-@if (session('status'))
+{{-- @if (session('status'))
 <div class="flex justify-center items-center ">
   <div class="alert alert-success sm:w-1/5 mb-0 mt-5" role="alert">
     {{ session('status') }}
@@ -18,7 +18,7 @@
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="student">
               student
-            </label>
+            </label> --}}
             {{-- <select onchange="SelectSemester(this)" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"   name="student_id">
               <option value="">choose a student</option>
               @foreach ($students as $student)
@@ -31,7 +31,7 @@
                   
               @endforeach
             </select> --}}
-            @error('student_id')
+            {{-- @error('student_id')
             <p class="text-red-500 text-xs italic">Please choose a student.</p>
             @enderror
                 
@@ -54,8 +54,8 @@
             </button>
           </div>
         </form>
-      </div>
-     @push('scripts')
+      </div> --}}
+     {{-- @push('scripts')
          <script >
             // function SelectSemester(e) {
             //   // var semester = $(this).hide();
@@ -65,6 +65,6 @@
 
             // }
          </script>
-     @endpush
- 
+     @endpush --}}
+ <h1>bank info</h1>
 @endsection
