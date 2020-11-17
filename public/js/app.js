@@ -38266,7 +38266,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "sm:ml-8 px-4 pt-2  rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
+                    "sm:ml-8 px-4 block pt-2 mt-2 sm:mt-1 rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
                   attrs: { href: this.receiptRoute }
                 },
                 [

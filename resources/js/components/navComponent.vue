@@ -106,7 +106,7 @@
       </a>
       <a :href="this.transcriptRoute" v-if="user.user_type == 'student'" class="mt-2 sm:mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-green-400 hover:text-white hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Sumbit Results
       </a>
-      <a v-if="user.user_type == 'student'" :href="this.receiptRoute" class="sm:ml-8 px-4 pt-2  rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">
+      <a v-if="user.user_type == 'student'" :href="this.receiptRoute" class="sm:ml-8 px-4 block pt-2 mt-2 sm:mt-1 rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">
               <i class="fa  fa-plus-circle text-green-400"></i>
               Add receipt
       </a>
