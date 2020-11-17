@@ -2064,6 +2064,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38056,7 +38060,7 @@ var render = function() {
                   on: { click: _vm.notifyclick }
                 },
                 [
-                  _vm.notification != 0
+                  _vm.notification != 0 && _vm.user.user_type == "sponsor"
                     ? _c(
                         "div",
                         {
@@ -38254,6 +38258,21 @@ var render = function() {
                   attrs: { href: this.transcriptRoute }
                 },
                 [_vm._v("Sumbit Results\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user.user_type == "student"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "sm:ml-8 px-4 pt-2  rounded-full text-sm font-medium  leading-5 text-gray-300 hover:text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.receiptRoute }
+                },
+                [
+                  _c("i", { staticClass: "fa  fa-plus-circle text-green-400" }),
+                  _vm._v("\n              Add receipt\n      ")
+                ]
               )
             : _vm._e(),
           _vm._v(" "),
