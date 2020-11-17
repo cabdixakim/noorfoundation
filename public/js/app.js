@@ -2068,6 +2068,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38296,7 +38299,19 @@ var render = function() {
                     "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
                   attrs: { href: this.studentsRoute }
                 },
-                [_vm._v("Students\n      ")]
+                [_vm._v("current students\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user.user_type == "sponsor"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.graduatedRoute }
+                },
+                [_vm._v("Graduated students\n      ")]
               )
             : _vm._e(),
           _vm._v(" "),

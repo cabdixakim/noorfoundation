@@ -112,10 +112,13 @@
       </a>
       <a :href="this.sponsorsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Sponsors
       </a>
-      <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Students
+      <a :href="this.studentsRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">current students
+      </a>
+      <a :href="this.graduatedRoute" v-if="user.user_type == 'sponsor'" class="mt-1 block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Graduated students
       </a>
       <a v-if="user.user_type == 'sponsor'" :href="this.depositsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">deposits
       </a>
+      
       <a v-if="user.user_type == 'sponsor'" :href="this.withdrawalsRoute" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">withdrawals
       </a>
     </div>
