@@ -10,7 +10,7 @@ class SponsorsListController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth','verified','admin','sponsor']);
+        $this->middleware(['auth','verified']);
  
     }
     /**
@@ -23,7 +23,7 @@ class SponsorsListController extends Controller
         //
         if (Auth::check()) {
             # code...
-            if(auth()->user()->user_type == 'sponsor'){
+            if(auth()->user()->user_type == 'sponsor' || auth()->user()->user_type == 'sponsor' ){
                
                 $sponsors = Sponsor::all();
                 

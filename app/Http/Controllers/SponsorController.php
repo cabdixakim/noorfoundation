@@ -13,7 +13,7 @@ class SponsorController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified','sponsor']);
+        $this->middleware(['auth','verified']);
  
     }
 
