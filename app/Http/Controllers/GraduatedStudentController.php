@@ -22,10 +22,12 @@ class GraduatedStudentController extends Controller
         $graduated = collect([]);
         
         foreach ($students as $student) {
+            if($student->plan){
             if($student->plan->graduation_date < Carbon::now()){
 
                 $graduated->push($student);
             }
+        }
            
         }
         foreach ($graduatedStudents as $student) {
