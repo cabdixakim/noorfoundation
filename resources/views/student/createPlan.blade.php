@@ -25,6 +25,15 @@
              <p class="text-red-500 text-xs italic">Please choose universty name.</p>
             @enderror
           </div>
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="faculty">
+              universty Name
+            </label>
+            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('faculty')}}" name="faculty" type="text" placeholder="engineering">
+           @error('faculty')
+             <p class="text-red-500 text-xs italic">Please choose your faculty.</p>
+            @enderror
+          </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester">
               semester
@@ -115,6 +124,14 @@
            </label>
          <li class=" w-2/3 font-bold py-2 pl-4 sm:ml-6 mb-2 text-gray-700 tracking-widest leading-tight  ">
            {{$student->plan->university_name}}
+         </li>
+         </div>
+        <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">
+         <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="faculty">
+          faculty
+           </label>
+         <li class=" w-2/3 font-bold py-2 pl-4 sm:ml-6 mb-2 text-gray-700 tracking-widest leading-tight  ">
+           {{$student->plan->faculty ?? ''}}
          </li>
          </div>
          <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">

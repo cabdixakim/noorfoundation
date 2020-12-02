@@ -7,7 +7,7 @@
   <ul class="nav nav-tabs ml-8 sm:ml-64 ">
     <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#home">Graduated students</a></li>    
   </ul>
-  @if (Auth::user()->user_type == 'admin')
+  @if (Auth::check() && Auth::user()->user_type == 'admin')
     <div class="flex justify-end">
       <a href="{{route('graduated-students.create')}}"  class="mt-2 sm:mt-1 text-center  mb-2 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-green-400  hover:text-white  hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">
         <i class="fa fa-plus-circle"></i> Add graduated student
