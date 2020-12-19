@@ -1,18 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Sponsor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-class SponsorsListController extends Controller
+class SponsorSettingController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
- 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +16,10 @@ class SponsorsListController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            # code...
-            if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'sponsor' ){
-               
-                $sponsors = Sponsor::where('id', '!=', auth()->id())->get();
-                
-                return view('sponsor.sponsorslist',compact('sponsors'));
-            }
-            return redirect('/');
-        }
-
+        $allSponsors = Sponsor::with(['profile'])->get();
+                $bannedSponsors = Sponsor::onlyTrashed()->get();
+                //  dd($allSponsors[0]->plansetting->status);
+                return view('admin.adminsponsors',compact('allSponsors','bannedSponsors'));
     }
 
     /**
@@ -98,5 +86,15 @@ class SponsorsListController extends Controller
     public function destroy($id)
     {
         //
+        if (auth()->user()->user_type == 'admin') {
+            $sponsor = Sponsor::withTrashed()->find($id);
+            if($sponsor->deleted_at == null){
+                $sponsor->delete();
+                return redirect()->back()->with('status', $sponsor->username.' is now banned');
+            } else {
+               $sponsor->restore();
+               return redirect()->back();
+            }
+         }  
     }
 }

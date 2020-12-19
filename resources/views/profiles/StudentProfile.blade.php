@@ -5,10 +5,10 @@
     
 <div class="bg-gray-600 row sm:flex sm:justify-between pb-20 m-0 " >
   <div class="sm:flex  col-md-7 ">
-      <div class="  sm:mt-8 sm:ml-16 ml-24 p-8 flex-column  ">
-      <img class="sm:h-32 sm:w-32 h-16 w-16 mb-2   object-cover rounded-full" src="{{ $avatar ??  asset('defaultImage\default.jpg') }}" alt="" />
+      <div class="  sm:mt-8 sm:ml-16 sm:ml-24 p-8 flex-column  ">
+      <div class=" sm:mr-0 flex justify-center"><a href="{{ $fullimage ??  asset('defaultImage\default.jpg') }}"> <img class="sm:h-40 sm:w-40 h-20 w-20 mb-2   object-cover rounded-full" src="{{ $avatar ??  asset('defaultImage\default.jpg') }}" alt="" /></a> </div>
       @can('show-edit-avatar')
-      <a href="{{route('avatar.create')}}" class="ml-3 mt-2  sm:ml-8 "><i class="fa fa-camera fa-2x text-gray-400 hover:text-blue-500" aria-hidden="true"></i></a>
+      <div class=" mt-2  sm:mr-0 flex justify-center"><a href="{{route('avatar.create')}}" ><i class="fa fa-camera fa-2x text-gray-400 hover:text-blue-500" aria-hidden="true"></i></a></div>
       @endcan
         
       </div>
@@ -17,14 +17,25 @@
             <div class="pt-2 pb-2 font-serif text-xl text-gray-200">
               @if (!empty($student->profile))
                <span class="uppercase"> {{($student->profile->firstname.' '.$student->profile->middlename) }}</span> 
-                @else 
+               @else 
                 <p>No profile to show</p>
                @endif
                   
             </div>
              <div class="font-mono italic text-xs pb-2">
                @if (!empty($student->plan))
-               <span class=""> student at  {{$student->plan->university_name}} university </span>
+               <div class="flex justify-center"><span class=""> student at  {{$student->plan->university_name}} university </span></div>
+              <div class="flex justify-around mt-2 ml-2 border-gray-400  border-opacity-25 border-t ">
+                <span>semester: {{$student->plan->semester}}</span>
+                <span>faculty: {{$student->plan->faculty}}</span>
+              </div>
+              <div class="flex justify-around mt-2 border-gray-400  border-opacity-25 border-t ">
+                <span>semester started on: {{$student->plan->semester_start}}</span>
+                <span>semester ends on: {{$student->plan->semester_end}}</span>
+              </div>
+              <div class="flex justify-center mt-2 border-gray-400  border-opacity-25 border-t ">
+                <span>student will graduate on: {{$student->plan->graduation_date}}</span>
+              </div>
                @else 
                <p>No profile Yet</p>
                @endif

@@ -23,7 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password','user_type',
+        'username', 'email', 'password','user_type','email_verified_at',
     ];
 
     protected $childTypes = [

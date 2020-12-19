@@ -3,7 +3,7 @@
 <!-- component -->
 <div class="w-full max-w-xs sm:max-w-full sm:flex sm:mt-5">
 
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-16 sm:m-auto sm:w-2/5 " action="{{route('student.update', $student->username)}}" method="POST">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-16 sm:m-auto sm:w-2/5 " action="{{route('student.update', $student->id)}}" method="POST">
       @method('PATCH')
       @csrf
       
@@ -43,8 +43,8 @@
 
         </label>
         <select name="country" id="CountrySelect" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-          <option value="">Please choose a country </option>
-             @foreach ($allCountries as $countryName=>$countryCode)
+          <option value="{{$student->profile->country ?? ''}}">{{($student->profile->country ?? 'Please choose a country')}} </option>
+          @foreach ($allCountries as $countryName=>$countryCode)
               <option class="shadow appearance-none border border-red-500 rounded w-1/2 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{$countryName.'|'.$countryCode}}" {{old('country') == $countryName.'|'.$countryCode ? 'selected' : ''}}  type="text" placeholder="somalia" > {{$countryName}} </option>
               @endforeach
         </select>

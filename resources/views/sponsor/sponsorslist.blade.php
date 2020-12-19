@@ -3,6 +3,13 @@
 <!-- component -->
  {{-- Tabs section --}}
  <div class="container mt-6 sm:mt-16 " id="section">
+  @if (session('status'))
+  <div class="flex justify-center items-center ">
+    <div class="alert alert-success   mb-8 mt-5" role="alert">
+      {{ session('status') }}
+  </div>
+ </div>
+  @endif
   <ul class="nav nav-tabs ml-8 sm:ml-64 ">
     <li class="active font-bold sm:text-lg "><a data-toggle="tab" class="hover:text-gray-800" href="#home">All sponsors</a></li>    
   </ul>

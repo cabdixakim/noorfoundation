@@ -120,7 +120,7 @@
        </div>
         <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">
          <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="firstname">
-          University Name
+          University Name:
            </label>
          <li class=" w-2/3 font-bold py-2 pl-4 sm:ml-6 mb-2 text-gray-700 tracking-widest leading-tight  ">
            {{$student->plan->university_name}}
@@ -128,7 +128,7 @@
          </div>
         <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">
          <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="faculty">
-          faculty
+          faculty:
            </label>
          <li class=" w-2/3 font-bold py-2 pl-4 sm:ml-6 mb-2 text-gray-700 tracking-widest leading-tight  ">
            {{$student->plan->faculty ?? ''}}
@@ -158,8 +158,9 @@
                 {{$student->plan->semester_end}}
                </li>
                </div>
+               <small class="text-red-500 ml-2">please ask an admin to change your graduation date if needed!</small>
                <div class="mb-6 sm:flex sm:justify-between sm:items-center shadow appearance-none border-b border-green-500 rounded">
-                 <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="firstname">
+                <label class="pl-6 block text-gray-700 text-sm font-bold tracking-widest mb-2" for="firstname">
                    Graduation Date:
                    </label>
                  <li class=" w-2/3 font-bold font-monospace py-2 pl-4 sm:ml-12 mb-2 text-gray-700 tracking-widest leading-tight  ">

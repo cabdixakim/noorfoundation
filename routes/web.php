@@ -58,14 +58,38 @@ Route::get('/admin', function ()
 // // sponsor routes
 // Route::post('/profiles/sposnors', 'SponsorProfileController@store')->name('profiles.sponsor.store');
 // Route::get('/profiles/sponsors/{sponsor}', 'SponsorProfileController@show')->name('profiles.sponsor.show');
-Route::resource('profile/student', 'StudentController');
-Route::resource('profile/sponsor', 'SponsorController');
+
+
+//route for student, assigning route parameter as 'id' instead of 'student'
+Route::resource('profile/student', 'StudentController',['parameters' =>[
+    'student' => 'id'
+ ]]);
+
+//route for sponsor, assigning route parameter as 'id' instead of 'sponsor'
+Route::resource('profile/sponsor', 'SponsorController',['parameters' =>[
+    'student' => 'id'
+ ]]);
 Route::resource('plan', 'PlanController');
 
 // Route::resource('Admin/adminpayments', 'AdminPaymentsController');
 
 Route::resource('Admin/dashboard', 'AdminDashboardController');
 Route::resource('Admin/student-settings', 'AdminStudentController');
+Route::resource('Admin/create-student', 'Admin\AddStudentController');
+Route::resource('Admin/create-sponsor', 'Admin\AddSponsorController');
+
+//the admin route for updating the student
+Route::resource('Admin/update-student-profile', 'Admin\EditStudentController',['parameters' =>[
+       'update-student-profile' => 'id'
+    ]]);
+
+// admin route for updating student plan
+Route::resource('Admin/update-student-plan', 'Admin\EditStudentPlanController');
+
+//the admin route for updating the sponsor
+Route::resource('Admin/update-sponsor-profile', 'Admin\EditSponsorController',['parameters' =>[
+    'update-sponsor-profile' => 'id'
+ ]]);
 
 
 Route::resource('payment', 'PaymentController');
@@ -76,6 +100,11 @@ Route::resource('notifications', 'NotificationController');
 Route::resource('avatar', 'AvatarController');
 
 Route::resource('sponsored-students', 'SponsoredStudentsController');
+
+//admin route to control sponsors
+Route::resource('Admin/sponsors', 'Admin\SponsorSettingController');
+
+
 Route::resource('graduated-students', 'GraduatedStudentController');
 Route::resource('sponsors-list', 'SponsorsListController');
 Route::resource('transcript', 'TranscriptController');

@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Sponsor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use PragmaRX\Countries\Package\Countries;
+use Illuminate\Support\Str;
+use App\Http\Requests\CreateProfileRequest;
 
-class SponsorsListController extends Controller
+
+class EditSponsorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
- 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +20,6 @@ class SponsorsListController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            # code...
-            if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'sponsor' ){
-               
-                $sponsors = Sponsor::where('id', '!=', auth()->id())->get();
-                
-                return view('sponsor.sponsorslist',compact('sponsors'));
-            }
-            return redirect('/');
-        }
-
     }
 
     /**
@@ -75,6 +63,13 @@ class SponsorsListController extends Controller
     public function edit($id)
     {
         //
+        $countries = new Countries();
+
+        $allCountries = $countries->all()->pluck('cca2','name.common');
+        
+        $sponsor = Sponsor::findOrFail($id);
+        $sponsor->load('profile');
+        return view('admin.updateSponsorProfile', compact('sponsor','allCountries'));
     }
 
     /**
@@ -84,9 +79,23 @@ class SponsorsListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateProfileRequest $request, $id)
     {
-        //
+        $list = Str::of($request->country)->explode('|')->first();
+        // dd($list->last());
+        $request->merge(['country'=>$list] );
+        
+        $sponsor = Sponsor::findOrFail($id);
+       
+        $data = $request->except('_token','_method'); 
+        if($sponsor->profile){
+            $sponsor->profile()->update($data);
+            return redirect()->action('Admin\EditSponsorController@edit',[$id])->with('status','profile updated successfully');
+        } else{
+            $sponsor->profile()->create($data);
+            return redirect()->action('SponsorsListController@index')->with('status', 'sponsor profile added successfully');
+        }
+        
     }
 
     /**

@@ -9,7 +9,7 @@ class Plan extends Model
     //mass assignment off
     protected $fillable = [
         'university_name', 'semester', 'amount_per_semester',
-        'semester_start','semester_end','graduation_date',
+        'semester_start','semester_end','graduation_date','faculty'
     ];
 
     

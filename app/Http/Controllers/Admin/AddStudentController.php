@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Sponsor;
+use App\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
-class SponsorsListController extends Controller
+class AddStudentController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
- 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +18,6 @@ class SponsorsListController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            # code...
-            if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'sponsor' ){
-               
-                $sponsors = Sponsor::where('id', '!=', auth()->id())->get();
-                
-                return view('sponsor.sponsorslist',compact('sponsors'));
-            }
-            return redirect('/');
-        }
-
     }
 
     /**
@@ -42,6 +28,7 @@ class SponsorsListController extends Controller
     public function create()
     {
         //
+        return view('admin.createuser');
     }
 
     /**
@@ -53,6 +40,31 @@ class SponsorsListController extends Controller
     public function store(Request $request)
     {
         //
+        if($request['email'] != ''){
+            $validationrules = ['required', 'string', 'email', 'max:255', 'unique:users'];
+            $regex =  'regex:/^\S*$/u';
+        } else {
+            $validationrules = '';
+            $regex = '';
+        }
+        if ($request['email'] == '') {
+            $email_verified_at = Carbon::now();
+        } else {
+            $email_verified_at = null;
+        }
+       $data = $request->validate([
+        'username' => ['required', 'string', 'max:255','unique:users','regex:/^\S*$/u'], 
+        'email' => [$validationrules, $regex],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+       ]);
+      $student = Student::create([
+        'username' => $data['username'], 
+        'user_type' => 'student',
+        'email' => $data['email'],
+        'email_verified_at'=> $email_verified_at,
+        'password' => Hash::make($data['password']),
+       ]);
+       return redirect()->action('Admin\EditStudentController@edit',[$student->id])->with('status', 'student added successfully');
     }
 
     /**

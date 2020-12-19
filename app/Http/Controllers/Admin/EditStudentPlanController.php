@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Sponsor;
+use App\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePlanRequest;
 
-class SponsorsListController extends Controller
+class EditStudentPlanController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','verified']);
- 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,17 +17,6 @@ class SponsorsListController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            # code...
-            if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'sponsor' ){
-               
-                $sponsors = Sponsor::where('id', '!=', auth()->id())->get();
-                
-                return view('sponsor.sponsorslist',compact('sponsors'));
-            }
-            return redirect('/');
-        }
-
     }
 
     /**
@@ -75,6 +60,9 @@ class SponsorsListController extends Controller
     public function edit($id)
     {
         //
+        $student = Student::findOrFail($id);
+        $student->load('plan');
+        return view('admin.updatePlan', compact('student'));
     }
 
     /**
@@ -84,9 +72,22 @@ class SponsorsListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePlanRequest $request, $id)
     {
         //
+        $student = Student::findOrfail($id);
+        $data = $request->validated();
+        if ($student->plan) {
+            # code...
+            $student->plan()->update($data);
+            return redirect()->action('Admin\EditStudentPlanController@edit', [$id]);
+        } else {
+            $student->plan()->create($data);
+            $student->plansetting()->update([
+                'status'=> 'disabled',
+            ]);
+            return redirect()->action('SponsoredStudentsController@index')->with('status', 'student plan added successfully');
+        }
     }
 
     /**

@@ -2071,6 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2078,7 +2079,7 @@ __webpack_require__.r(__webpack_exports__);
       profileOpen: false
     };
   },
-  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'paymentRoute', 'studentsRoute', 'graduatedRoute', 'paymentlistRoute', 'transcriptRoute', 'receiptRoute', 'sponsorsRoute', 'notification', 'notificatonRoute', 'depositsRoute', 'withdrawalsRoute'],
+  props: ['user', 'createPlanRoute', 'createProfileRoute', 'showProfile', 'logoutRoute', 'avatar', 'logo', 'paymentRoute', 'studentsRoute', 'graduatedRoute', 'paymentlistRoute', 'transcriptRoute', 'receiptRoute', 'sponsorsRoute', 'notification', 'notificatonRoute', 'depositsRoute', 'withdrawalsRoute'],
   methods: {
     toggleMenu: function toggleMenu() {
       this.isOpen = !this.isOpen;
@@ -37918,7 +37919,12 @@ var render = function() {
                 "flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
             },
             [
-              _c("div", { staticClass: "flex-shrink-0" }),
+              _c("div", { staticClass: "flex-shrink-0" }, [
+                _c("img", {
+                  staticClass: "h-6 w-6",
+                  attrs: { src: _vm.logo, alt: "" }
+                })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "hidden sm:block sm:ml-6" }, [
                 _c("div", { staticClass: "flex" }, [

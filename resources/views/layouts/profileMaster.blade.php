@@ -36,7 +36,7 @@
     @php
         if(Auth::check()){
             $user = Auth::user();
-        }
+        
         if ($user->user_type != 'admin') {
             # code...
             if(!empty($user->getFirstMediaUrl('avatar'))){
@@ -64,6 +64,7 @@
         } else {
           $paymentRoute = '#section';
         }
+    }
          
         
      @endphp
@@ -77,6 +78,7 @@
     receipt-route="{{route('receipt.create')}}"
      show-profile="{{$ProfileIndexRoute}}"
      avatar="{{ $avatar ?? '' }}"
+     logo="{{asset('logos\NorAli Logo1.jpg')}}"
      students-route="{{route('sponsored-students.index')}}"
      graduated-route="{{route('graduated-students.index')}}"
      sponsors-route="{{route('sponsors-list.index')}}"

@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Student;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use PragmaRX\Countries\Package\Countries;
+use App\Http\Requests\CreateProfileRequest;
+use Illuminate\Support\Str;
 
-class AdminStudentController extends Controller
+class EditStudentController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','verified','admin']);
- 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +37,7 @@ class AdminStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProfileRequest $request)
     {
         //
     }
@@ -64,23 +62,13 @@ class AdminStudentController extends Controller
     public function edit($id)
     {
         //
-         $student = Student::find($id);
-         if (!$student->plansetting) {
-            $student->plansetting()->create([
-                'status'=> 'disabled'
-            ]);
-         } else {
-         if($student->plansetting->status == 'enabled'){
-             $student->plansetting()->update([
-                 'status'=> 'disabled',
-             ]);
-         } else {
-            $student->plansetting()->update([
-                'status'=> 'enabled',
-            ]);
-         }
-        }
-          return redirect()->back();
+        $countries = new Countries();
+
+        $allCountries = $countries->all()->pluck('cca2','name.common');
+        
+        $student = Student::findOrFail($id);
+        $student->load('profile');
+        return view('admin.updateStudentProfile', compact('student','allCountries'));
     }
 
     /**
@@ -90,9 +78,24 @@ class AdminStudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateProfileRequest $request, $id)
     {
         //
+    //    dd($request->validated);
+        $list = Str::of($request->country)->explode('|')->first();
+        // dd($list->last());
+        $request->merge(['country'=>$list] );
+        
+        $sponsor = Student::findOrFail($id);
+       
+        $data = $request->except('_token','_method'); 
+        if($sponsor->profile){
+            $sponsor->profile()->update($data);
+            return redirect()->action('Admin\EditStudentController@edit',[$id])->with('status','profile updated successfully');
+        } else{
+            $sponsor->profile()->create($data);
+            return redirect()->action('Admin\EditStudentPlanController@edit',[$id])->with('status', 'Student profile added successfully');
+        }
     }
 
     /**

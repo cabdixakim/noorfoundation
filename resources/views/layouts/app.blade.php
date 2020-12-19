@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-20">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   <img class="w-6 h-6" src="{{asset('logos\NorAli Logo1.jpg')}}" alt="Noor Ali">
                 </a>
                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -60,6 +60,9 @@
                         </a>
                         <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('graduated-students.index')}}">
                             <span class="nav-link-text">Graduated students</span>
+                        </a>
+                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsors.index')}}">
+                            <span class="nav-link-text">sponsors</span>
                         </a>
                         
                         @endif

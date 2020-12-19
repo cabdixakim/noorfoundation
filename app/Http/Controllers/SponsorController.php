@@ -33,11 +33,14 @@ class SponsorController extends Controller
             if(!empty($sponsor->getFirstMediaUrl('avatar'))){
             if($sponsor->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
                  $avatar = $sponsor->getFirstMediaUrl('avatar', 'thumb');
+                 $fullimage = $sponsor->getFirstMediaUrl('avatar');
             } else {
                 $avatar = $sponsor->getFirstMediaUrl('avatar');
+                $fullimage = $sponsor->getFirstMediaUrl('avatar');
             }
         } else {
             $avatar = null;
+            $fullimage = null;
         }
            return view('profiles.SponsorProfile',compact('sponsor','avatar'));
         }
@@ -84,7 +87,7 @@ class SponsorController extends Controller
             if(empty($sponsor->getFirstMediaUrl('avatar'))){
                 return redirect()->route('avatar.create')->with('status', 'Profile added successfully! please add a profile picture');
                 } else {
-                    return redirect()->route('student.index');
+                    return redirect()->route('sponsor.index');
                 }
            
         } else{
@@ -101,19 +104,23 @@ class SponsorController extends Controller
     public function show(Sponsor $sponsor)
     {
         //
+        
         if(!$sponsor){
-            $sponsor = auth()->user()->id;
+            $sponsor = auth()->user();
          }
          $sponsor->load('profile','deposits');
 
             if(!empty($sponsor->getFirstMediaUrl('avatar'))){
             if($sponsor->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
                  $avatar = $sponsor->getFirstMediaUrl('avatar', 'thumb');
+                 $fullimage = $sponsor->getFirstMediaUrl('avatar', 'thumb');
             }  else {
                 $avatar = $sponsor->getFirstMediaUrl('avatar');
+                $fullimage = $sponsor->getFirstMediaUrl('avatar');
             }
         } else {
             $avatar = null;
+            $fullimage = null;
         }
          return view('profiles.SponsorProfile', compact('sponsor','avatar'));
     }

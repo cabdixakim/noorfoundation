@@ -18,6 +18,7 @@
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0">
           <!-- put logo in here -->
+          <img class="h-6 w-6" :src="logo" alt="">
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
@@ -144,6 +145,7 @@
            'showProfile',
            'logoutRoute',
            'avatar',
+           'logo',
            'paymentRoute',
            'studentsRoute',
            'graduatedRoute',

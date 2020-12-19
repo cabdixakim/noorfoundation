@@ -88,13 +88,13 @@ class PlanController extends Controller
     {
         //
         // dd(auth()->user()->planSetting);
-        if (Gate::authorize('edit-plan')){
+       
 
             $user = auth()->user()->id;
             $student = Student::findOrFail($user);
             $student->load('plan');
             return view('student.updatePlan', compact('student'));
-        }
+        
             
         
     }
@@ -109,7 +109,6 @@ class PlanController extends Controller
     public function update(CreatePlanRequest $request, $id)
     {
         //
-        if (Gate::authorize('edit-plan'));
 
         $user = auth()->user()->id;
         $student = Student::findOrfail($user);

@@ -37,13 +37,16 @@ class StudentController extends Controller
             if(!empty($student->getFirstMediaUrl('avatar'))){
             if($student->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
                  $avatar = $student->getFirstMediaUrl('avatar', 'thumb');
+                 $fullimage = $student->getFirstMediaUrl('avatar');
             } else {
                 $avatar = $student->getFirstMediaUrl('avatar');
+                $fullimage = $student->getFirstMediaUrl('avatar');
             }
         } else {
             $avatar = null;
+            $fullimage = null;
         }
-           return view('profiles.StudentProfile',compact('student','avatar', 'transcripts','receipts'));
+           return view('profiles.StudentProfile',compact('student','avatar','fullimage', 'transcripts','receipts'));
         } 
         return redirect('/');
     }
@@ -102,26 +105,31 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $id)
     {
         //
+        $student = $id;
         if(!$student){
-            $student = auth()->user()->id;
+            $student = auth()->user();
          }
          $student->load('profile','withdrawals','plan','transcripts');
+         
          $transcripts = $student->transcripts;
          $receipts = $student->studentreceipts;
-
+ 
             if(!empty($student->getFirstMediaUrl('avatar'))){
             if($student->getMedia('avatar')[0]->hasGeneratedConversion('thumb')){
                  $avatar = $student->getFirstMediaUrl('avatar', 'thumb');
+                 $fullimage = $student->getFirstMediaUrl('avatar');
             } else {
                 $avatar = $student->getFirstMediaUrl('avatar');
+                $fullimage = $student->getFirstMediaUrl('avatar');
             }
         } else {
             $avatar = null;
+            $fullimage = null;
         }
-         return view('profiles.StudentProfile', compact('student','avatar','transcripts','receipts'));
+         return view('profiles.StudentProfile', compact('student','avatar','fullimage','transcripts','receipts'));
     }
 
     /**

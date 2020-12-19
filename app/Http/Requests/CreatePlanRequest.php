@@ -23,12 +23,18 @@ class CreatePlanRequest extends FormRequest
      */
     public function rules()
     {
+        if (request()->has('graduation_date')) {
+           $graduation_rule = 'required';
+        } else {
+            $graduation_rule = '';
+        }
         return [
             //
             'university_name'=> 'required|string',
+            'faculty'=> 'required|string',
             'semester'=> 'required|string',
             'amount_per_semester'=> 'required|integer',
-            'graduation_date'=> 'required',
+            'graduation_date'=> $graduation_rule,
             'semester_start'=> 'required',
             'semester_end'=> ['required'],
         ];
