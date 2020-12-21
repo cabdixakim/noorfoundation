@@ -4,8 +4,8 @@
     
 <div class="bg-gray-600 row sm:flex sm:justify-between pb-20 m-0 " >
   <div class="sm:flex  col-md-7 ">
-      <div class="  sm:mt-8 sm:ml-16 ml-24 p-8 flex-column ">
-        <div><a href="{{ $fullimage ??  asset('defaultImage\default.jpg') }}"><img class="sm:h-40 sm:w-40 h-16 w-16 mb-2   object-cover rounded-full" src="{{ $avatar ??  asset('defaultImage\default.jpg') }}" alt="" /> </a></div>      
+     <div class="  sm:mt-8 sm:ml-16  p-8 flex-column ">
+        <div class=" sm:mr-0 flex justify-center"><a href="{{ $fullimage ??  asset('defaultImage\default.jpg') }}"><img class="sm:h-40 sm:w-40 h-16 w-16 mb-2   object-cover rounded-full" src="{{ $avatar ??  asset('defaultImage\default.jpg') }}" alt="" /> </a></div>      
       @can('show-edit-avatar')
       <div class=" mt-2  sm:mr-0 flex justify-center"><a href="{{route('avatar.create')}}" ><i class="fa fa-camera fa-2x text-gray-400 hover:text-blue-500" aria-hidden="true"></i></a></div>
       @endcan
