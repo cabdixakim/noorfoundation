@@ -5,7 +5,7 @@
 
 <div class="w-full max-w-xs sm:max-w-full sm:flex sm:mt-5">
   @if(empty($sponsor->profile))
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-16 sm:m-auto sm:w-2/5 " action="{{route('sponsor.store')}}" method="POST">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-16 sm:m-auto sm:w-2/5 " action="{{action('SponsorController@store' )}}" method="post">
     
       @csrf
 

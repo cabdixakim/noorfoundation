@@ -30,8 +30,13 @@ class CreateProfileRequest extends FormRequest
     public function rules()
     {
         $id = request()->route('id');
-        $user = User::findOrFail($id);
+        if($id != null){
+            $user = User::findOrFail($id);
+        } else {
+            $user = '';
+        }
         $inputcode = Str::of($this->input('country'))->explode('|')->last();
+        if($user != ''){
         if( $user->profile && $user->profile->country != ''){
             $usercode = Countries::where('name.common', $user->profile->country)->first()->cca2;
             $usercountry = $user->profile->country;
@@ -43,7 +48,10 @@ class CreateProfileRequest extends FormRequest
            
         } else {
             $validatePhone = $inputcode;
-        }
+        } 
+    }  else {
+        $validatePhone = $inputcode;
+    }
         return [
             'firstname'=> 'required|string',
             'middlename'=> 'required|string',

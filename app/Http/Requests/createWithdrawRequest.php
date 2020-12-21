@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\ReachedMaximum;
+use App\Rules\DepositBalanceReachedMinimum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class createWithdrawRequest extends FormRequest
@@ -27,7 +28,7 @@ class createWithdrawRequest extends FormRequest
         return [
             //
             'student_id' => 'required',
-            'amount' => ['required', new ReachedMaximum($this->all())],
+            'amount' => ['required', new ReachedMaximum($this->all()), new DepositBalanceReachedMinimum($this->all())],
         ];
     }
 }

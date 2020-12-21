@@ -27,7 +27,7 @@ class CreateDepositRequest extends FormRequest
             //
             'sponsor_id'=> 'required',
             'date'=> 'required',
-            'amount' => 'required',
+            'amount' => ['required', 'numeric','max:1000000'],
         ];
     }
 }

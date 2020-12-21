@@ -67,7 +67,7 @@ Route::resource('profile/student', 'StudentController',['parameters' =>[
 
 //route for sponsor, assigning route parameter as 'id' instead of 'sponsor'
 Route::resource('profile/sponsor', 'SponsorController',['parameters' =>[
-    'student' => 'id'
+    'sponsor' => 'id'
  ]]);
 Route::resource('plan', 'PlanController');
 
