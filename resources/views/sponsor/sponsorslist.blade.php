@@ -19,9 +19,14 @@
       @foreach ($sponsors as $sponsor)
       <div class="mb-2 flex justify-between bg-gray-300 border-l border-r border-b border-t border-transparent border-gray-600 p-2  ">
         <div> 
+          
           @if (!empty($sponsor->profile))
         <p><span class="text-lg font-bold font-mono text-blue-800">Full Name:</span> <span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->profile->firstname.' '.$sponsor->profile->middlename.' '.$sponsor->profile->lastname}}</span></p> 
+        {{-- adding username only for admin --}}
+        @if (Auth::user()->user_type == 'admin')
         <small class="text-red-500"> {{$sponsor->username}} </small>
+        @endif  
+        {{-- adding username only for admin --}}
         @else 
         <p><span class="text-lg font-bold font-mono text-blue-800">Username:</span> <span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->username}}</span></p> 
         @endif
