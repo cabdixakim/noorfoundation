@@ -181,5 +181,15 @@ class SponsorController extends Controller
     public function destroy($id)
     {
         //
+        if (auth()->user()->user_type == 'admin') {
+            $sponsor = Sponsor::withTrashed()->find($id);
+            if($sponsor->deleted_at == null){
+                $sponsor->delete();
+                return redirect()->back()->with('status', $sponsor->username.' is now banned');
+            } else {
+               $sponsor->restore();
+               return redirect()->back();
+            }
+         } 
     }
 }

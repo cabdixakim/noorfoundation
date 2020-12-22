@@ -35,12 +35,12 @@
           <div> 
         
               <p><span class="text-lg font-bold  font-sarif text-blue-800">Full Name:</span> <a href="{{route('student.show', $student->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $student->profile->firstname.' '.$student->profile->middlename.' '.$student->profile->lastname}}</span> </a></p>     
-            {{-- adding username only for admin --}}
-              @if (Auth::user()->user_type == 'admin')
-                 <small class="text-red-500"> {{$student->username}} </small>
+            {{-- allowing Admin to login as user--}}
+            @if (Auth::user()->user_type == 'admin')
+                 <small class="text-red-500"> <a href="{{ route('loginas.edit', $student->id) }}" >login As {{$student->username}} </a> </small>
              @endif
-             {{-- adding username only for admin --}}
-              </div>
+            {{-- allowing Admin to login as user--}}
+          </div>
               <div class="sm:mr-32 ml-8 border-l border-gray-400 pl-2">
               <a class="font-bold text-md underline text-red-600" href="#" onclick="event.preventDefault(); document.getElementById('destroyStudent{{$student->id}}').submit()"> Delete User</a>
            </div>
@@ -54,13 +54,17 @@
               </a>
             </div>
             <div class="flex justify-start mb-2 border-transparent border-gray-600 border-b border-r border-l bg-gray-300"><a class="text-blue-400 underline" href="{{route('update-student-profile.edit', $student->id)}}"> Update profile</a> <a class="ml-4 text-blue-400 underline" href="{{route('update-student-plan.edit', $student->id)}}"> Update Plan</a></div>
-      @else 
+         @else 
       <div class="flex justify-between border-l border-r border-t border-transparent border-gray-600 p-2 bg-gray-300 ">
         <div> 
       
             <p><span class="text-lg font-bold  font-sarif text-blue-800">Username:</span> <a href="{{route('student.show', $student->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $student->username ?? ''}}</span> </a></p>     
-           
-        </div>
+            {{-- allowing Admin to login as user--}}
+            @if (Auth::user()->user_type == 'admin')
+                <small class="text-red-500"> <a href="{{ route('loginas.edit', $student->id) }}" >login As {{$student->username}} </a> </small>
+            @endif
+            {{-- allowing Admin to login as user--}}
+          </div>
         <div class="sm:mr-10 ml-8 border-l border-gray-400 pl-2">
               <a class="font-bold text-md underline text-red-600" href="#" onclick="event.preventDefault(); document.getElementById('destroyStudent{{$student->id}}').submit()"> Delete User</a>
         </div>

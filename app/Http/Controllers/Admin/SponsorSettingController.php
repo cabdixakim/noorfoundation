@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class SponsorSettingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified','admin']);
+ 
+    }
     /**
      * Display a listing of the resource.
      *

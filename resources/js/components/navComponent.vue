@@ -83,7 +83,7 @@
               </a>
               <a v-if="user.user_type == 'student'" :href="this.createPlanRoute" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">plan
               </a>
-              <a  href="/password/reset" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Reset Password
+              <a  href="/easy-password-reset/create" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Reset Password
               </a>
               <a :href="this.logoutRoute" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out
               </a>
@@ -165,7 +165,10 @@
             },
             notifyclick(){
               this.open = false;
-              window.location.href = window.location.origin +'/notifications';
+              if (this.user.user_type != 'student') {
+                
+                window.location.href = window.location.origin +'/notifications';
+              }
               
             }
         }

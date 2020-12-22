@@ -70,6 +70,10 @@ Route::resource('profile/sponsor', 'SponsorController',['parameters' =>[
     'sponsor' => 'id'
  ]]);
 Route::resource('plan', 'PlanController');
+Route::resource('loginas', 'Admin\LoginAsController');
+
+//allowing easy password reset
+Route::resource('easy-password-reset', 'Hacks\EasyPasswordResetController');
 
 // Route::resource('Admin/adminpayments', 'AdminPaymentsController');
 

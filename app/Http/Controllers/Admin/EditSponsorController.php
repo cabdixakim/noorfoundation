@@ -12,6 +12,12 @@ use App\Http\Requests\CreateProfileRequest;
 
 class EditSponsorController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified','admin']);
+ 
+    }
     /**
      * Display a listing of the resource.
      *

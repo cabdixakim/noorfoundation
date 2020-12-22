@@ -2086,7 +2086,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     notifyclick: function notifyclick() {
       this.open = false;
-      window.location.href = window.location.origin + '/notifications';
+
+      if (this.user.user_type != 'student') {
+        window.location.href = window.location.origin + '/notifications';
+      }
     }
   }
 });
@@ -38206,7 +38209,10 @@ var render = function() {
                           {
                             staticClass:
                               "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out",
-                            attrs: { href: "/password/reset", role: "menuitem" }
+                            attrs: {
+                              href: "/easy-password-reset/create",
+                              role: "menuitem"
+                            }
                           },
                           [_vm._v("Reset Password\n              ")]
                         ),

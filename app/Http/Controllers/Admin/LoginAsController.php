@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Sponsor;
-use Carbon\Carbon;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class AddSponsorController extends Controller
+class LoginAsController extends Controller
 {
     public function __construct()
     {
@@ -33,8 +32,6 @@ class AddSponsorController extends Controller
     public function create()
     {
         //
-        return view('admin.createuser');
-
     }
 
     /**
@@ -46,31 +43,6 @@ class AddSponsorController extends Controller
     public function store(Request $request)
     {
         //
-        if($request['email'] != ''){
-            $validationrules = ['required', 'string', 'email', 'max:255', 'unique:users'];
-            $regex =  'regex:/^\S*$/u';
-        } else {
-            $validationrules = '';
-            $regex = '';
-        }
-        if ($request['email'] == '') {
-            $email_verified_at = Carbon::now();
-        } else {
-            $email_verified_at = null;
-        }
-       $data = $request->validate([
-        'username' => ['required', 'string', 'max:255','unique:users','regex:/^\S*$/u'], 
-        'email' => [$validationrules, $regex],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-       ]);
-       Sponsor::create([
-        'username' => $data['username'], 
-        'user_type' => 'sponsor',
-        'email' => $data['email'],
-        'email_verified_at'=> $email_verified_at,
-        'password' => Hash::make($data['password']),
-       ]);
-       return redirect()->action('EditSponsorController@edit');
     }
 
     /**
@@ -93,6 +65,15 @@ class AddSponsorController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        if(Auth::user()->user_type == 'admin'){
+
+            Auth::logout();
+            Auth::login($user);
+            return redirect('/');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

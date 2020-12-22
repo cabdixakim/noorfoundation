@@ -11,6 +11,12 @@ use Illuminate\Support\Str;
 
 class EditStudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified','admin']);
+ 
+    }
     /**
      * Display a listing of the resource.
      *

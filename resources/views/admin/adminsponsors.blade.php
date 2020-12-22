@@ -35,9 +35,13 @@
           <div> 
         
               <p><span class="text-lg font-bold  font-sarif text-blue-800">Full Name:</span> <a href="{{route('sponsor.show', $sponsor->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $sponsor->profile->firstname.' '.$sponsor->profile->middlename.' '.$sponsor->profile->lastname}}</span> </a></p>     
-             
+                {{-- allowing Admin to login as user--}}
+                @if (Auth::user()->user_type == 'admin')
+                  <small class="text-red-500"> <a href="{{ route('loginas.edit', $sponsor->id) }}" >login As {{$sponsor->username}} </a> </small>
+                @endif
+                {{-- allowing Admin to login as user--}}
               </div>
-              <div class="sm:mr-32 ml-8 border-l border-gray-400 pl-2">
+              <div class=" ml-8 border-l border-gray-400 pl-2">
               <a class="font-bold text-md underline text-red-600" href="#" onclick="event.preventDefault(); document.getElementById('destroysponsor{{$sponsor->id}}').submit()"> Delete User</a>
            </div>
               
@@ -49,15 +53,20 @@
         <div> 
       
             <p><span class="text-lg font-bold  font-sarif text-blue-800">Username:</span> <a href="{{route('sponsor.show', $sponsor->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $sponsor->username ?? ''}}</span> </a></p>     
-           
+             {{-- allowing Admin to login as user--}}
+            @if (Auth::user()->user_type == 'admin')
+                <small class="text-red-500"> <a href="{{ route('loginas.edit', $sponsor->id) }}" >login As {{$sponsor->username}} </a> </small>
+            @endif
+       {{-- allowing Admin to login as user--}}
         </div>
-        <div class="sm:mr-10 ml-8 border-l border-gray-400 pl-2">
+        <div class="ml-8 border-l border-gray-400 pl-2">
               <a class="font-bold text-md underline text-red-600" href="#" onclick="event.preventDefault(); document.getElementById('destroysponsor{{$sponsor->id}}').submit()"> Delete User</a>
         </div>
       
       </div>
       <div class="flex justify-start mb-2 border-transparent border-gray-600 border-b border-r border-l bg-gray-300"><a class="text-blue-400 underline" href="{{route('update-sponsor-profile.edit', $sponsor->id)}}"> Update profile</a> </div>
       @endif
+
       <form id="destroysponsor{{$sponsor->id}}" action="{{route('sponsors.destroy',$sponsor->id)}}" method="POST">
         @csrf
         @method('DELETE')
@@ -71,7 +80,16 @@
     <div id="menu1" class="tab-pane fade">
       @foreach ($bannedSponsors as $sponsor)
      @if(!empty($sponsor->profile))
-      
+      <div class="mb-2 flex  justify-between bg-gray-300 border-l border-r border-b border-t border-transparent border-gray-600 p-2  ">
+            <div> 
+              
+            <p><span class="text-lg font-bold font-mono text-blue-800">Full Name:</span> <a href="{{route('sponsor.show',$sponsor->id)}}"><span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->profile->firstname.' '.$sponsor->profile->middlename.' '.$sponsor->profile->lastname}}</span></a> </p> 
+              
+          </div>
+            <div class="sm:ml-32 ml-8 border-l border-gray-400 pl-2">
+            <a class="font-bold text-lg underline" href="#" onclick="event.preventDefault(); document.getElementById('restoreSponsor{{$sponsor->id}}').submit()"> remove ban</a>
+            </div>
+          </div>
       @else 
       <div class="mb-2 flex  justify-between bg-gray-300 border-l border-r border-b border-t border-transparent border-gray-600 p-2  ">
         <div> 
@@ -84,7 +102,7 @@
         </div>
       </div>
        @endif
-      <form id="restoresponsor{{$sponsor->id}}" action="{{route('sponsors.destroy',$sponsor->id)}}" method="POST">
+      <form id="restoreSponsor{{$sponsor->id}}" action="{{route('sponsors.destroy',$sponsor->id)}}" method="POST">
         @csrf
         @method('DELETE')
           <input type="hidden" type="submit">
