@@ -35,7 +35,9 @@
           <div> 
         
               <p><span class="text-lg font-bold  font-sarif text-blue-800">Full Name:</span> <a href="{{route('student.show', $student->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $student->profile->firstname.' '.$student->profile->middlename.' '.$student->profile->lastname}}</span> </a></p>     
-             
+             @if (auth()->user()->user_type == 'admin')
+                 <small class="text-red-500"> {{$user->username}} </small>
+             @endif
               </div>
               <div class="sm:mr-32 ml-8 border-l border-gray-400 pl-2">
               <a class="font-bold text-md underline text-red-600" href="#" onclick="event.preventDefault(); document.getElementById('destroyStudent{{$student->id}}').submit()"> Delete User</a>

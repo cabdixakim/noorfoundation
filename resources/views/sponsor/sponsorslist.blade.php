@@ -21,8 +21,9 @@
         <div> 
           @if (!empty($sponsor->profile))
         <p><span class="text-lg font-bold font-mono text-blue-800">Full Name:</span> <span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->profile->firstname.' '.$sponsor->profile->middlename.' '.$sponsor->profile->lastname}}</span></p> 
+        <small class="text-red-500"> {{$sponsor->username}} </small>
         @else 
-        <p><span class="text-lg font-bold font-mono text-blue-800">Full Name:</span> <span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->username}}</span></p> 
+        <p><span class="text-lg font-bold font-mono text-blue-800">Username:</span> <span class="text-gray-800 font-bold text-lg italic bg-gray-200 border-green-400">{{ $sponsor->username}}</span></p> 
         @endif
       </div>
         <div class="sm:ml-32 ml-8 border-l border-gray-400 pl-2">
