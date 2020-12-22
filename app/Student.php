@@ -72,14 +72,14 @@ class Student extends User{
 
   public function HasNotGraduated(){
     if ($this->plan) {
-      $grad_date = Carbon::parse($this->plan->graduation_date);
-      return  $grad_date > Carbon::now();
+      $grad_date = Carbon::parse($this->plan->graduation_date)->addMonths(1)->format('y-m');
+      return  $grad_date > Carbon::now()->format('y-m');
     }
   }
   public function SemesterDidNotEnd(){
     if ($this->plan) {
-      $sem_end = Carbon::parse($this->plan->semester_end);
-      return  $sem_end > Carbon::now();
+      $sem_end = Carbon::parse($this->plan->semester_end)->addMonths(1)->format('y-m');
+      return  $sem_end > Carbon::now()->format('y-m');
     }
   }
 
