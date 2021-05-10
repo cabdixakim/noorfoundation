@@ -22,7 +22,7 @@
       </div>
     </div>
    
-@if (!$groupedData)
+    @if ($groupedData->isEmpty())
     <h1 class="mt-5 text-center text-xl font-bold text-gray-400"> There are no deposits yet!</h1>
 @else
 @foreach ($groupedData as $key=>$deposits)
@@ -39,6 +39,7 @@
         </tr>
       </thead>
       <tbody>
+        @if(!$deposits->empty())
         @foreach ($deposits as $deposit)
         <tr>
         <td>{{$deposit->created_at}}</td>
@@ -50,6 +51,7 @@
         <td class="pl-5 text-green-400"> + ${{$deposit->amount}}</td>
         </tr>
         @endforeach
+        @endif
        
       </tbody>
     </table>
