@@ -63,14 +63,14 @@ class AddSponsorController extends Controller
         'email' => [$validationrules, $regex],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
        ]);
-       Sponsor::create([
+       $sponsor = Sponsor::create([
         'username' => $data['username'], 
         'user_type' => 'sponsor',
         'email' => $data['email'],
         'email_verified_at'=> $email_verified_at,
         'password' => Hash::make($data['password']),
        ]);
-       return redirect()->action('EditSponsorController@edit');
+       return redirect()->action('Admin\EditSponsorController@edit',[$sponsor->id])->with('status', 'sponsor added successfully');
     }
 
     /**
