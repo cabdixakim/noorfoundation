@@ -22,7 +22,7 @@
       </div>
     </div>
    
-    @if ($groupedData->isEmpty())
+@if (!$groupedData)
     <h1 class="mt-5 text-center text-xl font-bold text-gray-400"> There are no deposits yet!</h1>
 @else
 @foreach ($groupedData as $key=>$deposits)
