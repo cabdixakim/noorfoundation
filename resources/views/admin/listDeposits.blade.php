@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        @if(!$deposits->empty())
+        @if(!$deposits->isNotEmpty())
         @foreach ($deposits as $deposit)
         <tr>
         <td>{{$deposit->created_at}}</td>
