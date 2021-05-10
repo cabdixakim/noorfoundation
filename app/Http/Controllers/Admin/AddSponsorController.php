@@ -33,7 +33,7 @@ class AddSponsorController extends Controller
     public function create()
     {
         //
-        return view('admin.createuser');
+        return view('admin.createsponsor');
 
     }
 
