@@ -52,7 +52,7 @@ class LoginController extends Controller
             if (!$user->profile) {
                 return '/profile/sponsor/create';
             }
-            return '/profile/sponsor'; //return sponsor profile
+            return '/deposit'; //return sponsor profile
         }
         elseif (auth()->user()->user_type === 'admin'){
            

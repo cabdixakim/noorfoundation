@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         DB::table('users')->insert([
-            'username' => 'Admin',
+            'username' => 'Sah!ra@g8',
             'user_type' => 'admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'sugaal1332@gmail.com',
             'created_at' => Carbon::now(),
             'email_verified_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'remember_token'=> null,
-            'password' => Hash::make('password'),
+            'password' => Hash::make('e!syp@ss'),
         ]);
     }
 }
