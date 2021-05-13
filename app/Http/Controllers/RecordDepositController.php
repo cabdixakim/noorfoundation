@@ -28,7 +28,7 @@ class RecordDepositController extends Controller
         $sponsors_with_a_balance = array();
         $current_date = Carbon::now()->format('Y-m-d H:i:s');
     
-        $year = RegisterYear::first()->year;
+        $year = (RegisterYear::first()) ? RegisterYear::first()->year : Carbon::now()->format('Y') ;
         $sponsors = Sponsor::with(['deposits'=>function($q) use($year){
             $q->where('year','=',$year );
         }])->get();
