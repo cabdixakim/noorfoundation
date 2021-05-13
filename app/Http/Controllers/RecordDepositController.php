@@ -45,17 +45,20 @@ class RecordDepositController extends Controller
                          'balance' => NULL,
                  ]);
             } else {
-                 $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year],[
-                    'year' => $year,
-                    'total' => NULL,
-                    'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually : 0 - $sponsor->deposits->sum('amount'),
-            ]);           
+                if($sponsor->deposits){
+                    $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year],[
+                       'year' => $year,
+                       'total' => NULL,
+                       'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually : NULL - $sponsor->deposits->sum('amount'),
+                     ]);           
+                }
          }
         }
         $records_full = RecordDeposit::with('sponsor')->where('balance', NULL)->
                                                         orderBy('year','desc')->get()->groupBy('year');
-        $records_balance = RecordDeposit::with('sponsor')->orderBy('year','desc')
-                                                         ->where('total', NULL)->get()->groupBy('year');
+        $records_balance = RecordDeposit::with('sponsor') ->where('total', NULL)
+                                                        ->orderBy('year','desc')
+                                                        ->get()->groupBy('year');
        
         return view('admin/listRecords', compact(['records_full', 'records_balance']));
     }
