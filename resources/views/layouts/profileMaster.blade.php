@@ -87,6 +87,7 @@
     notification-route = {{route('notifications.index')}}
     deposits-route = {{route('deposit.index')}}
     withdrawals-route = {{route('withdraw.index')}}
+    history-route = {{route('show-records.index')}}
      >
     </nav-component>
     </div>

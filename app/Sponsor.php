@@ -16,6 +16,15 @@ class Sponsor extends User{
   {
     return $this->hasOne(SponsorProfile::class);
   }
+  public function RecordDeposits()
+  {
+    # code... 
+    return $this->hasMany(RecordDeposit::class,'user_id')->latest();
+  }
+  public function SponsorPlan()
+  {
+      return $this->hasOne(SponsorPlan::class);
+  }
   public function deposits()
   {
     return $this->hasMany(Deposit::class,'user_id')->latest();

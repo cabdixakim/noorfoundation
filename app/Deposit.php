@@ -8,6 +8,7 @@ class Deposit extends Model
 {
     //
     protected $fillable = [
+        'year',
          'amount',
          'created_at',
          'updated_at',

@@ -53,7 +53,9 @@
         <div> 
       
             <p><span class="text-lg font-bold  font-sarif text-blue-800">Username:</span> <a href="{{route('sponsor.show', $sponsor->id)}}"> <span class="text-gray-800 pl-2 font-bold text-lg italic ">{{ $sponsor->username ?? ''}}</span> </a></p>     
-             {{-- allowing Admin to login as user--}}
+            <p class="text-green-500"> <a href="{{ route('sponsor-plan.create') }}" > Update plan  </a> </p>
+
+            {{-- allowing Admin to login as user--}}
             @if (Auth::user()->user_type == 'admin')
                 <small class="text-red-500"> <a href="{{ route('loginas.edit', $sponsor->id) }}" >login As {{$sponsor->username}} </a> </small>
             @endif

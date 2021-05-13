@@ -98,6 +98,9 @@ Route::resource('Admin/update-sponsor-profile', 'Admin\EditSponsorController',['
 
 Route::resource('payment', 'PaymentController');
 Route::resource('deposit', 'DepositController');
+Route::resource('sponsor-plan', 'SponsorPlanController');
+Route::resource('register-year', 'RegisterYearController');
+Route::resource('show-records', 'RecordDepositController');
 Route::resource('withdraw', 'WithdrawController');
 Route::resource('notifications', 'NotificationController');
 

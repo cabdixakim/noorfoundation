@@ -30,9 +30,13 @@ class ReachedMaximum implements Rule
     public function passes($attribute, $value)
     {
         //
-        $student = Student::findOrFail($this->data['student_id']);
-        $credit = $student->CurrentSemesterCredit();
-        return $value <= $credit;
+        if(!$this->data['student_id']){
+             return False;
+        } else {
+            $student = Student::findOrFail($this->data['student_id']);
+            $credit = $student->CurrentSemesterCredit();
+            return $value <= $credit;
+        }
     }
 
     /**
@@ -42,8 +46,12 @@ class ReachedMaximum implements Rule
      */
     public function message()
     {
+        if(!$this->data['student_id']){
+            return 'are you sure you chose a student?';
+        } else {
         $student = Student::findOrFail($this->data['student_id']);
         $credit = $student->CurrentSemesterCredit();
         return 'You cannot pay more than USD$ '. number_format($credit,0,',',',').' to '.$student->username;
-    }
+       }
+}
 }

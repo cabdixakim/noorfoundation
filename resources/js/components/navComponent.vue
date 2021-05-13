@@ -39,6 +39,10 @@
                <i class="fa fa-minus-circle text-red-400 "></i>
                withdrawals
             </a>
+             <a v-if="user.user_type == 'sponsor'" :href="this.historyRoute" class="mt-1 sm:ml-2 block px-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+               <i class="fa fa-history text-red-400 "></i>
+               History
+            </a>
             <a v-if="user.user_type == 'sponsor'" :href="this.paymentRoute" class="ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Donate Now
             </a>
             <a v-if="user.user_type == 'student'" :href="this.transcriptRoute" class="sm:ml-20 px-4 pt-2  rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out">Submit Results
@@ -156,7 +160,8 @@
            'notification',
            'notificatonRoute',
            'depositsRoute',
-           'withdrawalsRoute'
+           'withdrawalsRoute',
+           'historyRoute'
         ],
         
         methods: {

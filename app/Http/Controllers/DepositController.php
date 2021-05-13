@@ -30,8 +30,8 @@ class DepositController extends Controller
     {
         //
 
-        $groupedData = Deposit::orderBy('created_at','desc')->get()->groupBy(function($val) {
-            return Carbon::parse($val->created_at)->format('Y-M');
+        $groupedData = Deposit::orderBy('year','desc')->get()->groupBy(function($val) {
+            return $val->year;
       });
     //   dd($groupedData);
          $balance = Deposit::all()->sum('amount') - Withdraw::all()->sum('amount');
@@ -65,12 +65,11 @@ class DepositController extends Controller
      */
     public function store(CreateDepositRequest $request)
     {
-        $date = Carbon::parse($request->date)->format('Y-m-d H:i:s');
+        $date = Carbon::parse($request->date)->format('Y');
         $sponsor = Sponsor::find($request->sponsor_id);
         $deposit = $sponsor->deposits()->create([
             'amount'=> $request->amount,
-            'created_at'=> $date,
-            'updated_at'=> $date,
+            'year' => $date
         ]);
         $users = User::where('user_type', '!=', 'admin')->get();
         if($deposit){

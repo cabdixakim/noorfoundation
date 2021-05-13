@@ -31,9 +31,9 @@ class DepositBalanceReachedMinimum implements Rule
     public function passes($attribute, $value)
     {
         //
-        $balance = Deposit::all('amount')->count();
+        $balance = Deposit::all()->sum('amount');
       
-        return $value <= $balance;
+        return $value > $balance;
     }
 
     /**

@@ -44,6 +44,7 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check() && Auth::user()->user_type == 'admin')
                              
+                        
                         <a class="navbar-link mt-2 sm:mt-0 sm:ml-6 hover:text-blue-400   text-gray-100" href="{{ route('deposit.index') }}">
                             <i class="fa  fa-plus-circle text-green-400"></i>
                             <span class="nav-link-text">deposits</span>
@@ -64,7 +65,14 @@
                         <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsors.index')}}">
                             <span class="nav-link-text">sponsors</span>
                         </a>
+                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('register-year.create')}}">
+                            <span class="nav-link-text">Register Year</span>
+                        </a>
                         
+                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-16 hover:text-blue-400   text-red-400" href="{{ route('show-records.index') }}">
+                            <i class=" fa fa-history "></i>
+                            <span class="nav-link-text text-md">History</span>
+                        </a>
                         @endif
                     </ul>
 

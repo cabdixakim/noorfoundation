@@ -30,7 +30,7 @@
             @enderror
                 
           </div>
-          <div class="mb-6">
+          {{-- <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
                Money deposited on?
             </label>
@@ -43,7 +43,7 @@
            <p class="text-red-500 text-xs italic">Please specify the date on which the money was deposited.</p>
            @enderror
                
-          </div>
+          </div> --}}
         
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">

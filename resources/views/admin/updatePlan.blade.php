@@ -46,10 +46,10 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester_start">
-              semester_start
+              when will semester start?
             </label>
             <div class="flex items-start ">
-              <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start ?? '')}}" name="semester_start" type="text" placeholder="2020/2/19">
+              <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start ?? '')}}" name="semester_start" type="text" placeholder="2020/2/19">
               <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
     
@@ -60,10 +60,10 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="semester_end">
-              semester_end
+             when will the semester end?
             </label>
             <div class="flex items-start ">
-                <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end ?? '')}}" name="semester_end" type="text" placeholder="2020/6/19">
+                <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end ?? '')}}" name="semester_end" type="text" placeholder="2020/6/19">
                 <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
             @error('semester_end')
@@ -73,10 +73,10 @@
           <div class="mb-6">
             <small class="text-red-500">only the admin(you) can update this field</small>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="graduation_date">
-              graduation_date
+              graduation date
             </label>
             <div class="flex items-start ">
-                <input data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('graduation_date',$student->plan->graduation_date ?? '')}}" name="graduation_date" type="text" placeholder="2020/6/19">
+                <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('graduation_date',$student->plan->graduation_date ?? '')}}" name="graduation_date" type="text" placeholder="2020/6/19">
                 <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
             @error('graduation_date')
@@ -87,7 +87,7 @@
          
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="amount_per_semester">
-              amount_per_semester
+              amount of money needed per year
             </label>
             <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"value="{{old('amount_per_semester',$student->plan->amount_per_semester ?? '')}}"   name="amount_per_semester" type="number" placeholder="400">
              @error('amount_per_semester')
