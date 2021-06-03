@@ -44,7 +44,7 @@
                             @foreach ($records as $record)
                             <tr>
                               @if (!empty($record->sponsor->profile))
-                              <td>{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}}</td>   
+                              <td><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}} </a></td>   
                               @else
                               <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>     
                               @endif
@@ -88,7 +88,7 @@
                               @foreach ($records as $record)
                               <tr>
                                 @if (!empty($record->sponsor->profile))
-                                    <td>{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}}</td>   
+                                    <td><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}} </a></td>   
                                 @else
                                     <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>   
                                 @if (!empty($record->sponsor->deposits))
