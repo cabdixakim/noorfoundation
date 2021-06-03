@@ -39,6 +39,16 @@ class Sponsor extends User{
     })->sum('amount');
 }
 
+public function annualDeposits()
+{
+     if(RegisterYear::first()){
+           $year = RegisterYear::first()->year;
+           return $this->deposits()->where(Carbon::parse('created_at')->format('Y'), $year)->sum('amount');
+     } else {
+         return $this->deposits()->where(Carbon::parse('created_at', Carbon::now()->format('Y-m-d H:i:s')))->sum('amount');
+     }
+}
+
 // public function SponsoredStudents()
 // {
   
