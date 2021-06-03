@@ -89,14 +89,15 @@
             
             <div class="flex justify-start border-l border-r border-b border-t border-transparent border-gray-600 p-2 bg-gray-300 ">
               <div> 
-                <p><span class="text-lg font-bold  font-sarif">Date:</span> <span class="text-gray-600 pl-2 font-bold text-lg italic ">2020/09/03</span></p> 
+                <p><span class="text-lg font-bold  font-sarif">Date:</span> <span class="text-gray-600 pl-2 font-bold text-lg italic ">{{\Carbon\Carbon::parse($transcript->created_at)->format('l jS \of F Y')}}</span></p> 
               </div>
               <div class="sm:ml-32 ml-8 border-l border-gray-400 pl-2">
                 
                 <p class="text-lg font-bold font-mono">{{$transcript->description}} </p> 
                 @if (!empty($transcript->getFirstMediaUrl('transcripts')))
-                       <a class="font-bold text-lg underline" href="{{$transcript->getFirstMediaUrl('transcripts')}}"> See transcript</a>
-                   
+                  <a class="font-bold text-lg underline" href="{{$transcript->getFirstMediaUrl('transcripts')}}"> See transcript</a>
+                   @else 
+                      <p> no document </p>
                 @endif
               </div>
             </div>    

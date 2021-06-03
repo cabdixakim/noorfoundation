@@ -30,12 +30,12 @@
             @enderror
                 
           </div>
-          {{-- <div class="mb-6">
+          <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
                Money deposited on?
             </label>
             <div class="flex items-start ">
-              <input style="transform: translate(0, 1.0em);" data-provide="datepicker" data-date-format="yyyy/mm/dd" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('date')}}" name="date" type="text" placeholder="2020/2/19">
+              <input style="transform: translate(0, 1.0em);" data-provide="datepicker" data-date-format="yyyy/mm/dd"  class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('date')}}" name="date" type="text" placeholder="2020/2/19">
               <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
     
@@ -43,7 +43,7 @@
            <p class="text-red-500 text-xs italic">Please specify the date on which the money was deposited.</p>
            @enderror
                
-          </div> --}}
+          </div>
         
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">

@@ -36,8 +36,8 @@ class RecordDepositController extends Controller
        
         
         foreach ($sponsors as $sponsor) {
-           
-            if($sponsor->SponsorPlan && $sponsor->SponsorPlan->amount_required_annually  <= $sponsor->deposits->sum('amount')){
+           if($sponsor->SponsorPlan ){
+            if( $sponsor->SponsorPlan->amount_required_annually  <= $sponsor->deposits->sum('amount')){
                 //  $sponsors_who_paid_in_full += [$sponsor->username => $sponsor->deposits->sum('amount')];
                   $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year,],[
                          'year' => $year,
@@ -49,11 +49,12 @@ class RecordDepositController extends Controller
                     $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year],[
                        'year' => $year,
                        'total' => NULL,
-                       'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually : NULL - $sponsor->deposits->sum('amount'),
+                       'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually - $sponsor->deposits->sum('amount'): NULL - $sponsor->deposits->sum('amount'),
                      ]);           
                 }
          }
         }
+    }
         $records_full = RecordDeposit::with('sponsor')->where('balance', NULL)->
                                                         orderBy('year','desc')->get()->groupBy('year');
         $records_balance = RecordDeposit::with('sponsor') ->where('total', NULL)

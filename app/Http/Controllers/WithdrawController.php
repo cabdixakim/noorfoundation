@@ -63,6 +63,7 @@ class WithdrawController extends Controller
     public function store(createWithdrawRequest $request)
     {
         //
+        dd($request->semester);
         $student = Student::find($request->student_id);
         $withdrawal = $student->withdrawals()->create($request->all());
          

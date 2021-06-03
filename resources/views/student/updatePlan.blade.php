@@ -42,7 +42,7 @@
               when will current semester start?
             </label>
             <div class="flex items-start ">
-              <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start)}}" name="semester_start" type="text" placeholder="tarikhda semester ka bilaabeesid">
+              <input data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start)}}" name="semester_start" type="text" placeholder="tarikhda semester ka bilaabeesid">
               <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
     
@@ -57,7 +57,7 @@
 
             </label>
             <div class="flex items-start ">
-                <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end)}}" name="semester_end" type="text" placeholder="tarikhda semester ka dhameeneysid">
+                <input data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end)}}" name="semester_end" type="text" placeholder="tarikhda semester ka dhameeneysid">
                 <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
             @error('semester_end')

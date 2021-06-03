@@ -34,7 +34,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                    <img class="w-6 h-6" src="{{asset('logos\NorAli Logo1.jpg')}}" alt="Noor Ali">
                 </a>
-               
+                @if (Auth::check() && Auth::user()->user_type != 'admin')
+                <a href="/" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard
+                </a>
+                 @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

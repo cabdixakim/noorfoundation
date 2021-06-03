@@ -2123,6 +2123,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38127,18 +38131,6 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.user.user_type == "sponsor"
-                    ? _c(
-                        "a",
-                        {
-                          staticClass:
-                            "ml-32 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white bg-green-400 hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
-                          attrs: { href: this.paymentRoute }
-                        },
-                        [_vm._v("Donate Now\n            ")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
                   _vm.user.user_type == "student"
                     ? _c(
                         "a",
@@ -38368,18 +38360,6 @@ var render = function() {
             [_vm._v("Dashboard\n      ")]
           ),
           _vm._v(" "),
-          _vm.user.user_type == "sponsor"
-            ? _c(
-                "a",
-                {
-                  staticClass:
-                    "mt-2 sm:mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 bg-green-400  hover:text-white  hover:bg-green-700 focus:outline-none focus:text-white focus:bg-green-700 transition duration-150 ease-in-out",
-                  attrs: { href: this.paymentRoute }
-                },
-                [_vm._v("Donate Now\n      ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
           _vm.user.user_type == "student"
             ? _c(
                 "a",
@@ -38464,6 +38444,21 @@ var render = function() {
                   attrs: { href: this.withdrawalsRoute }
                 },
                 [_vm._v("withdrawals\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.user.user_type == "sponsor"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-1 sm:ml-2 block px-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out",
+                  attrs: { href: this.historyRoute }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-history text-red-400 " }),
+                  _vm._v("\n            History\n      ")
+                ]
               )
             : _vm._e()
         ])

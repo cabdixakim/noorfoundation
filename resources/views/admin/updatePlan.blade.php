@@ -49,7 +49,7 @@
               when will semester start?
             </label>
             <div class="flex items-start ">
-              <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start ?? '')}}" name="semester_start" type="text" placeholder="2020/2/19">
+              <input data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_start',$student->plan->semester_start ?? '')}}" name="semester_start" type="text" placeholder="2020/2/19">
               <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
     
@@ -63,7 +63,7 @@
              when will the semester end?
             </label>
             <div class="flex items-start ">
-                <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end ?? '')}}" name="semester_end" type="text" placeholder="2020/6/19">
+                <input data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('semester_end',$student->plan->semester_end ?? '')}}" name="semester_end" type="text" placeholder="2020/6/19">
                 <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
             @error('semester_end')
@@ -76,7 +76,7 @@
               graduation date
             </label>
             <div class="flex items-start ">
-                <input data-provide="datepicker" data-date-format="yyyy/mm" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('graduation_date',$student->plan->graduation_date ?? '')}}" name="graduation_date" type="text" placeholder="2020/6/19">
+                <input data-provide="datepicker" data-date-format="yyyy/mm/dd" data-date-min-view-mode="months" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" value="{{old('graduation_date',$student->plan->graduation_date ?? '')}}" name="graduation_date" type="text" placeholder="2020/6/19">
                 <span class=""><i class="far fa-calendar-alt fa-2x  ml-2 h-full"></i></span>
             </div>
             @error('graduation_date')

@@ -8,7 +8,7 @@
 @endpush
 <div class="container mt-20">
   
-      @if (App\RegisterYear::first() && App\RegisterYear::first()->year != Carbon\Carbon::now()->format('Y'))
+      @if (App\RegisterYear::first() && App\RegisterYear::first()->year < Carbon\Carbon::now()->format('Y'))
         <div id="alert" class=" mb-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
           <strong class="font-bold">sanadka waa dhamade!</strong>
           <span class="block sm:inline">  fadlan sanadka lagu jiro dooro </span> <a href="{{route('register-year.create')}}"><span class="ml-5 text-blue-400"> Click here</span> </a>

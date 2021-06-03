@@ -28,7 +28,7 @@ class createWithdrawRequest extends FormRequest
         return [
             //
             'student_id' => 'required',
-            'amount' => ['required', new ReachedMaximum($this->all()), new DepositBalanceReachedMinimum($this->all())],
+            'amount' => ['required','numeric','min:0','not_in:0', new ReachedMaximum($this->all()), new DepositBalanceReachedMinimum($this->all())],
         ];
     }
 }

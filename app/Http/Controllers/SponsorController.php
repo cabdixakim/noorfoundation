@@ -104,7 +104,7 @@ class SponsorController extends Controller
     public function show(Sponsor $sponsor)
     {
         //
-        
+        // dd($sponsor->id);
         if(!$sponsor){
             $sponsor = auth()->user();
          }

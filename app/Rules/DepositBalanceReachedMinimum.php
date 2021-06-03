@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use App\Deposit;
 use App\Student;
+use App\Withdraw;
 use Illuminate\Contracts\Validation\Rule;
 
 class DepositBalanceReachedMinimum implements Rule
@@ -31,9 +32,10 @@ class DepositBalanceReachedMinimum implements Rule
     public function passes($attribute, $value)
     {
         //
-        $balance = Deposit::all()->sum('amount');
-      
-        return $value > $balance;
+        
+        $balance = Deposit::all()->sum('amount') - Withdraw::all()->sum();
+       
+        return $value < $balance;
     }
 
     /**
@@ -43,6 +45,6 @@ class DepositBalanceReachedMinimum implements Rule
      */
     public function message()
     {
-        return 'Total balance is less than the value you entered' ;
+        return 'Sorry! value entered is more than the money we have in our account.' ;
     }
 }

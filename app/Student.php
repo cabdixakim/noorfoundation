@@ -58,7 +58,7 @@ class Student extends User{
      if($this->plan){
     return $this->withdrawals()->where(function($q){
       $q->where('semester',$this->plan->semester);
-      $q->whereBetween( 'created_at',[new Carbon($this->plan->semester_start), new Carbon($this->plan->semester_end)]);
+      $q->whereBetween( 'created_at',[Carbon::parse($this->plan->semester_start)->format('Y-m-d H:i:s'),  Carbon::parse($this->plan->semester_end)->format('Y-m-d H:i:s')]);
     })->sum('amount');
   }
     

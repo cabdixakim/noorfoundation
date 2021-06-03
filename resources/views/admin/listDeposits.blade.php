@@ -9,7 +9,7 @@
 
 
 <div class="container mt-20">
-  @if (App\RegisterYear::first() && App\RegisterYear::first()->year != Carbon\Carbon::now()->format('Y'))
+  @if (App\RegisterYear::first() && App\RegisterYear::first()->year < Carbon\Carbon::now()->format('Y'))
     <div id="alert" class=" mb-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
       <strong class="font-bold">sanadka waa dhamade!</strong>
       <span class="block sm:inline">  fadlan sanadka lagu jiro dooro </span> <a href="{{route('register-year.create')}}"><span class="ml-5 text-blue-400"> Click here</span> </a>
@@ -38,7 +38,7 @@
 @else
     @foreach ($groupedData as $key=>$deposits)
       <div class="sm:w-full mt-3 text-center">
-      <span class="font-bold text-md"> {{$key}} </span> <span class="pl-2 italic">Total:</span> <span class="font-bold text-green-400 font-mono pl-2"> + ${{$deposits->sum('amount')}}</span> 
+        <span class="font-bold text-md"> {{\Carbon\Carbon::parse($key)->format('F , Y')}} </span> <span class="pl-2 italic">Total:</span> <span class="font-bold text-green-400 font-mono pl-2"> + ${{$deposits->sum('amount')}}</span> 
       </div>
 
       @if ($deposits->isEmpty())
@@ -56,7 +56,7 @@
               <tbody>
                 @foreach ($deposits as $deposit)
                 <tr>
-                <td>{{$deposit->year}}</td>
+                <td>{{$deposit->created_at->format('Y-m-d')}}</td>
                   @if (!empty($deposit->sponsor->profile))
                   <td>{{ucwords($deposit->sponsor->profile->firstname.' '.$deposit->sponsor->profile->middlename.' '.$deposit->sponsor->profile->lastname)}}</td>   
                   @else
