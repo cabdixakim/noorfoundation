@@ -48,8 +48,8 @@
                               @else
                               <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>     
                               @endif
-                            <td class="pl-5 text-green-500"> + USD {{$record->total}}</td>
-                            <td class="pl-5 text-green-500"> + USD {{$record->total - $record->sponsor->SponsorPlan->amount_required_annually}}</td>
+                            <td class="pl-5 text-green-500"> + USD {{number_format($record->total,0,',',',')}}</td>
+                            <td class="pl-5 text-green-500"> + USD {{number_format($record->total - $record->sponsor->SponsorPlan->amount_required_annually,0,',',',')}}</td>
                             
                             </tr>
                             @endforeach
@@ -80,19 +80,24 @@
                           <table class="table table-bordered table-hover">
                             <thead class="bg-red-400">
                               <tr>
+                                <th scope="col">lacagta intuu bixiye</th>
                                 <th scope="col">magaca</th>
-                                <th scope="col">lacagta inta baaqi ku ah</th>
                               </tr>
                             </thead>
                             <tbody>
                               @foreach ($records as $record)
                               <tr>
                                 @if (!empty($record->sponsor->profile))
-                                <td>{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}}</td>   
+                                    <td>{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}}</td>   
                                 @else
-                                <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>   
+                                    <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>   
+                                @if (!empty($record->sponsor->deposits))
+                                   <td class="pl-5 text-red-500"> - USD {{number_format($record->sponsor->deposits->sum('amount'),0,',',',')}} </td>
+                                @else
+                                     <small class="italics text-gray-400"> weli waxbo mabixin</small>
                                 @endif
-                              <td class="pl-5 text-red-500"> - USD {{$record->balance}} </td>
+                                <td class="pl-5 text-red-500"> - USD {{number_format($record->balance,0,',',',')}} </td>
+                                @endif
                               </tr>
                               @endforeach
                             
