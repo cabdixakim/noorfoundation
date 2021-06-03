@@ -48,7 +48,7 @@
                               @else
                               <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>     
                               @endif
-                            <td class="pl-5 text-green-500"> + USD {{number_format($record->total,0,',',',')}}</td>
+                            <td class="pl-5 text-green-500"> +USD {{number_format($record->total,0,',',',')}}</td>
                             <td class="pl-5 text-green-500"> + USD {{number_format($record->total - $record->sponsor->SponsorPlan->amount_required_annually,0,',',',')}}</td>
                             
                             </tr>
@@ -91,13 +91,14 @@
                                     <td><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->profile->firstname.' '.$record->sponsor->profile->middlename.' '.$record->sponsor->profile->lastname)}} </a></td>   
                                 @else
                                     <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>   
+                                @endif
                                 @if (!empty($record->sponsor->deposits))
                                    <td class="pl-5 text-red-500"> - USD {{number_format($record->sponsor->deposits->sum('amount'),0,',',',')}} </td>
                                 @else
                                      <small class="italics text-gray-400"> weli waxbo mabixin</small>
                                 @endif
                                 <td class="pl-5 text-red-500"> - USD {{number_format($record->balance,0,',',',')}} </td>
-                                @endif
+                               
                               </tr>
                               @endforeach
                             
