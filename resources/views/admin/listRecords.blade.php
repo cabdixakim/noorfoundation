@@ -80,8 +80,9 @@
                           <table class="table table-bordered table-hover">
                             <thead class="bg-red-400">
                               <tr>
-                                <th scope="col">lacagta intuu bixiye</th>
                                 <th scope="col">magaca</th>
+                                <th scope="col">lacagta kuharte</th>
+                                <th scope="col">lacagta uu bixiye</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -92,12 +93,14 @@
                                 @else
                                     <td class="font-bold"><a href="{{route('sponsor.show', $record->sponsor->id)}}">{{ucwords($record->sponsor->username)}}</a></td>   
                                 @endif
+                                
+                                <td class="pl-5 text-red-500"> - USD {{number_format($record->balance,0,',',',')}} </td>
+                                
                                 @if (!empty($record->sponsor->deposits))
                                    <td class="pl-5 text-red-500"> - USD {{number_format($record->sponsor->deposits->sum('amount'),0,',',',')}} </td>
                                 @else
                                      <small class="italics text-gray-400"> weli waxbo mabixin</small>
                                 @endif
-                                <td class="pl-5 text-red-500"> - USD {{number_format($record->balance,0,',',',')}} </td>
                                
                               </tr>
                               @endforeach
