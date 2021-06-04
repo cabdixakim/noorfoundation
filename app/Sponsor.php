@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Sponsor extends User{
   
@@ -43,12 +44,15 @@ public function annualDeposits()
 {
      if(RegisterYear::first()){
            $year = RegisterYear::first()->year;
-           return $this->deposits()->where(Carbon::parse('created_at')->format('Y'), $year)->sum('amount');
+          return ($this->deposits()->where(function($q) use ($year) {
+             $q->where(DB::raw(" (DATE_FORMAT(created_at, '%Y')) "), $year);
+          })->sum('amount'));
      } else {
-         return $this->deposits()->where(Carbon::parse('created_at', Carbon::now()->format('Y-m-d H:i:s')))->sum('amount');
+         return $this->deposits()->where(DB::raw(" (DATE_FORMAT(created_at, '%Y')) "), Carbon::now()->format('Y'))->sum('amount');
      }
 }
 
+ 
 // public function SponsoredStudents()
 // {
   

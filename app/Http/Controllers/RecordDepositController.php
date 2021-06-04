@@ -24,41 +24,46 @@ class RecordDepositController extends Controller
     public function index()
     {
         //
-        $sponsors_who_paid_in_full = array();
-        $sponsors_with_a_balance = array();
-        $current_date = Carbon::now()->format('Y-m-d H:i:s');
+        // $sponsors_who_paid_in_full = array();
+        // $sponsors_with_a_balance = array();
+        // $current_date = Carbon::now()->format('Y-m-d H:i:s');
     
-        $year = (RegisterYear::first()) ? RegisterYear::first()->year : Carbon::now()->format('Y') ;
-        $sponsors = Sponsor::with(['deposits'=>function($q) use($year){
-            $q->where('year','=',$year );
-        }])->get();
+        // $year = (RegisterYear::first()) ? RegisterYear::first()->year : Carbon::now()->format('Y') ;
+        // $sponsors = Sponsor::with(['deposits'=>function($q) use($year){
+        //     $q->where('year','=',$year );
+        // }])->get();
         // dd($sponsors); 
        
         
-        foreach ($sponsors as $sponsor) {
-           if($sponsor->SponsorPlan ){
-            if( $sponsor->SponsorPlan->amount_required_annually  <= $sponsor->deposits->sum('amount')){
-                //  $sponsors_who_paid_in_full += [$sponsor->username => $sponsor->deposits->sum('amount')];
-                  $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year,],[
-                         'year' => $year,
-                         'total' => $sponsor->deposits->sum('amount'),
-                         'balance' => NULL,
-                 ]);
-            } else {
-                if($sponsor->deposits){
-                    $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year],[
-                       'year' => $year,
-                       'total' => NULL,
-                       'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually - $sponsor->deposits->sum('amount'): NULL - $sponsor->deposits->sum('amount'),
-                     ]);           
-                }
-         }
-        }
-    }
+    //     foreach ($sponsors as $sponsor) {
+    //        if($sponsor->SponsorPlan ){
+    //         if( $sponsor->SponsorPlan->amount_required_annually  <= $sponsor->deposits->sum('amount')){
+    //             //  $sponsors_who_paid_in_full += [$sponsor->username => $sponsor->deposits->sum('amount')];
+    //               $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year,],[
+    //                      'year' => $year,
+    //                      'total' => $sponsor->deposits->sum('amount'),
+    //                      'annual_deposits' => $sponsor->deposits->sum('amount'),
+    //                      'balance' => NULL,
+    //              ]);
+    //         } else {
+    //             if($sponsor->deposits){
+    //                 $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $year],[
+    //                    'year' => $year,
+    //                    'total' => NULL,
+    //                    'annual_deposits' => $sponsor->deposits->sum('amount'),
+    //                    'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually - $sponsor->deposits->sum('amount'): NULL - $sponsor->deposits->sum('amount'),
+    //                  ]);           
+    //             }
+    //      }
+    //     }
+    // }
+    
+    // ** used the above functionality to create or update records for each sponsor ***
+
         $records_full = RecordDeposit::with('sponsor')->where('balance', NULL)->
                                                         orderBy('year','desc')->get()->groupBy('year');
         $records_balance = RecordDeposit::with('sponsor') ->where('total', NULL)
-                                                        ->orderBy('year','desc')
+                                                        ->orderBy('year','desc') 
                                                         ->get()->groupBy('year');
        
         return view('admin/listRecords', compact(['records_full', 'records_balance']));

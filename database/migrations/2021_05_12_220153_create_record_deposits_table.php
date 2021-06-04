@@ -18,6 +18,7 @@ class CreateRecordDepositsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('year');
             $table->string('total')->nullable();
+            $table->string('annual_deposits');
             $table->string('balance')->nullable();
             $table->timestamps();
         });

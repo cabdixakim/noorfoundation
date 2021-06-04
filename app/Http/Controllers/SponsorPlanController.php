@@ -59,22 +59,50 @@ class SponsorPlanController extends Controller
              'sponsor_id'=> 'required',
              'amount_required'=> 'required'
         ]);
-        $sponsor = Sponsor::findOrFail($data['sponsor_id']);
+                $sponsor = Sponsor::findOrFail($data['sponsor_id']);
         if(!$sponsor->SponsorPlan){
 
-            $sponsor->SponsorPlan()->create([
+                $sponsor->SponsorPlan()->create([
                 'amount_required_annually' => $data['amount_required'],
                 ]);
         } else {
-            $sponsor->SponsorPlan()->update([
+                $sponsor->SponsorPlan()->update([
                 'amount_required_annually' => $data['amount_required'],
                 ]);
             }
+            
+           $nowYear = Carbon::now()->format('Y');
+            if( $sponsor->deposits && $data['amount_required']  <= $sponsor->deposits()->where('year', $nowYear)->sum('amount')){
+        
+        $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=>$nowYear ],[
+            'year' =>$nowYear,
+            'total' => $sponsor->deposits()->where('year', $nowYear)->sum('amount'),
+            'annual_deposits' => ($sponsor->deposits()
+            ->where('year',$nowYear)->get() != NULL) ? $sponsor->deposits()
+            ->where('year',$nowYear)->sum('amount') : 0 ,
+            'balance' =>NULL,
+        ]); 
+        
+    } else 
+        if($sponsor->deposits){
 
-        return redirect()->back()->with('status', 'plan added successfully');
-    }
+            $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=>$nowYear ],[
+                'year' =>$nowYear,
+                'total' => NULL,
+                'annual_deposits' => ($sponsor->deposits()
+                ->where('year',$nowYear)->get() != NULL) ? $sponsor->deposits()
+                ->where('year',$nowYear)->sum('amount') : 0 ,
+                'balance' =>($sponsor->RecordDeposits()->where('user_id', $sponsor->id)
+                        ->value('year') ==$nowYear) ? 
+                            $data['amount_required'] - $sponsor->deposits()->where('year',$nowYear)->sum('amount'): 
+                            $data['amount_required'],
+            ]); 
+    } 
 
-    /**
+return redirect()->back()->with('status', 'plan added successfully');
+}
+
+/**
      * Display the specified resource.
      *
      * @param  \App\SponsorPlan  $sponsorPlan

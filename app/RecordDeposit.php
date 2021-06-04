@@ -10,7 +10,8 @@ class RecordDeposit extends Model
     protected $fillable = [
         'year', 
         'total',
-        'balance'
+        'balance',
+        'annual_deposits'
     ];
     public function sponsor()
     {

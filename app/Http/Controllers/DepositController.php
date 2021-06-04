@@ -74,6 +74,27 @@ class DepositController extends Controller
             'created_at'=> $date,
             'updated_at'=> $date,
         ]);
+        // create record for sponsor
+        if($sponsor->SponsorPlan ){
+            if( $sponsor->SponsorPlan->amount_required_annually  <= $sponsor->deposits()->where('year', $deposit->year)->sum('amount')){
+                //  $sponsors_who_paid_in_full += [$sponsor->username => $sponsor->deposits->sum('amount')];
+                  $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $deposit->year],[
+                         'year' => $year,
+                         'total' => $sponsor->deposits()->where('year', $year)->sum('amount'),
+                         'annual_deposits' => $sponsor->deposits()->where('year', $year)->sum('amount'),
+                         'balance' => NULL,
+                 ]);
+            } else {
+                    $sponsor->RecordDeposits()->updateOrCreate(['user_id'=>$sponsor->id, 'year'=> $deposit->year],[
+                       'year' => $year,
+                       'total' => NULL,
+                       'annual_deposits' => $sponsor->deposits()->where('year', $year)->sum('amount'),
+                       'balance' => ($sponsor->SponsorPlan) ? $sponsor->SponsorPlan->amount_required_annually - $sponsor->deposits()->where('year', $deposit->year)->sum('amount'): NULL - $sponsor->deposits()->where('year', $deposit->year)->sum('amount'),
+                     ]);           
+                
+         }
+        }
+        // end of record function
         $users = User::where('user_type', '!=', 'admin')->get();
         if($deposit){
 

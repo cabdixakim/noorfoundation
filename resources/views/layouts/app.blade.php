@@ -68,9 +68,9 @@
                         <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('sponsors.index')}}">
                             <span class="nav-link-text">sponsors</span>
                         </a>
-                        <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('register-year.create')}}">
+                        {{-- <a class="navbar-link mt-2 sm:mt-0 sm:ml-6  hover:text-blue-400 text-gray-100" href="{{route('register-year.create')}}">
                             <span class="nav-link-text">Register Year</span>
-                        </a>
+                        </a> --}} 
                         
                         <a class="navbar-link mt-2 sm:mt-0 sm:ml-16 hover:text-blue-400   text-red-400" href="{{ route('show-records.index') }}">
                             <i class=" fa fa-history "></i>

@@ -97,10 +97,9 @@
                                 <td class="pl-5 text-red-500"> - USD {{number_format($record->balance,0,',',',')}} </td>
                                 
                                 @if (!empty($record->sponsor->deposits))
-                                   <td class="pl-5 text-green-500">USD {{number_format($record->sponsor->annualDeposits,0,',',',')}} </td>
+                                   <td class="pl-5 text-green-500">USD {{number_format($record->annual_deposits,0,',',',')}} </td>
                                 @else
-                                     <small class="italics text-gray-400"> weli waxbo mabixin</small>
-                                @endif
+                                     <small class="italics text-gray-400"> weli waxbo mabixin</small>                                @endif
                                
                               </tr>
                               @endforeach
